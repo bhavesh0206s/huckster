@@ -1,6 +1,7 @@
 import React from 'react';
 import './navbar.css'
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const styles = {
   textTransform: "uppercase" 
@@ -12,8 +13,10 @@ const Navbar = () => {
     <nav className="navbar main" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <div className="navbar-item">
-          <img id="icon" src="https://img.icons8.com/color/50/000000/potters-wheel.png" alt="artisanship"/>
-          <strong id="company-name" style={{color: "antiquewhite"}}>Artisanship</strong>
+          <Link to="/">  
+            <img id="icon" src="https://img.icons8.com/color/50/000000/potters-wheel.png" alt="artisanship"/>
+            <strong id="company-name" style={{color: "antiquewhite"}}>Artisanship</strong>
+          </Link>
         </div>
 
         <div role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -25,30 +28,37 @@ const Navbar = () => {
 
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
-          <div className="navbar-item" style={{color: "antiquewhite"}}>
-            Home
+          <div className="navbar-item" style={{color: "antiquewhite", cursor:"pointer"}}>
+            <Link to="/sell">
+              Sell Here
+            </Link>
           </div>
-          <div className="navbar-item" style={{color: "antiquewhite"}}>
-            Sell Here
+          <div className="navbar-item" style={{color: "antiquewhite", cursor:"pointer"}}>
+            <Link to="/products">
+              Products
+            </Link>
           </div>
-          <div className="navbar-item" style={{color: "antiquewhite"}}>
-            Your Orders
+          <div className="navbar-item" style={{color: "antiquewhite", cursor:"pointer"}}>
+            <Link to="/your-order">
+              Your Orders
+            </Link>
           </div>
           <div className="navbar-item has-dropdown is-hoverable">
-            <div className="navbar-link" style={{color: "antiquewhite"}}>
+            <div className="navbar-link" style={{color: "antiquewhite", cursor:"pointer"}}>
               More
             </div>
 
             <div className="navbar-dropdown">
-              <div className="navbar-item">
-                About
-              </div>
-              <div className="navbar-item">
-                Contact
+              <div className="navbar-item" style={{cursor:"pointer"}}>
+                <Link to="/about">
+                  About
+                </Link>
               </div>
               <hr className="navbar-divider"/>
-              <div className="navbar-item">
-                Report an issue
+              <div className="navbar-item" style={{cursor:"pointer"}}>
+                <Link to="/contact">
+                  Contact Us
+                </Link>
               </div>
             </div>
           </div>
@@ -57,12 +67,16 @@ const Navbar = () => {
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
-              <div className="button is-primary">
-                <strong>Sign up</strong>
-              </div>
-              <div className="button is-light">
-                Log in
-              </div>
+              <Link to="signup">
+                <div className="button is-primary">
+                  <strong>Sign up</strong>
+                </div>
+              </Link>
+              <Link to="signin">
+                <div className="button is-light">
+                  Log in
+                </div>
+              </Link>
             </div>
           </div>
         </div>

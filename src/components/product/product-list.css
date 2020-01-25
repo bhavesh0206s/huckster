@@ -3,8 +3,12 @@
 }
 .card{
   background-color: #cfb495;
+  min-width: 100px;
+  min-height: 300px;
+  border-radius: 5px;
 }
 
 .columns{
   padding: 20px 50px 0px 50px;
 }
+
