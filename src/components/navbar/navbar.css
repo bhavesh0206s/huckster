@@ -1,0 +1,12 @@
+#company-name{
+  text-transform: uppercase;
+  font-size: x-large;
+  cursor: pointer;
+}
+.main{
+  background: #5d5b6a;
+}
+
+#icon{
+  width: 30px;
+}

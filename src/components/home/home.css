@@ -1,0 +1,37 @@
+.home{
+  background-image: url(./artisanship.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  z-index: -5;
+}
+.layer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(48, 48, 45, 0.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -4;
+}
+
+#buy-online{
+  text-transform: uppercase;
+  color: antiquewhite;
+  font-size: 2em;
+}
+
+#title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 10rem;
+  color: antiquewhite;
+}
+
