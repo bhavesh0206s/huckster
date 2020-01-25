@@ -5,7 +5,6 @@
   background-size: cover;
   width: 100%;
   height: 100vh;
-  z-index: -5;
 }
 .layer{
   display: flex;
@@ -43,5 +42,11 @@
 @media only screen and (max-width: 600px) {
   .signin{
     padding-left: 30px;
+  }
+  #title{
+    font-size: 3em;
+  }
+  #buy-online{
+    font-size: 1em;
   }
 }

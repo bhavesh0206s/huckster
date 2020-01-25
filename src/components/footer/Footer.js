@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <div style={{backgroundColor:"#706c61"}}>
-      <footer style={{display:"flex", justifyContent:"space-around", marginTop:".8%"}}>
+      <footer style={{display:"flex", justifyContent:"space-around"}}>
             <div style={{color:"white"}}>
               Copyright &copy; 2020 Artisanship
             </div>

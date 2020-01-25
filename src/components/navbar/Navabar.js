@@ -2,18 +2,19 @@ import React from 'react';
 import './navbar.css'
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
+import { useState } from 'react';
 
-const styles = {
-  textTransform: "uppercase" 
-}
+
 
 const Navbar = () => {
+  const [isCartClicked, setCartClicked] = useState(false)
 
   return (
     <nav className="navbar main" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <div className="navbar-item">
-          <Link to="/">  
+          <Link to="/" >  
             <img id="icon" src="https://img.icons8.com/color/50/000000/potters-wheel.png" alt="artisanship"/>
             <strong id="company-name" style={{color: "antiquewhite"}}>Artisanship</strong>
           </Link>
@@ -28,34 +29,34 @@ const Navbar = () => {
 
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
-          <div className="navbar-item" style={{color: "antiquewhite", cursor:"pointer"}}>
-            <Link to="/sell">
+          <div className="navbar-item">
+            <Link to="/sell" style={{color: "black", cursor:"pointer"}}>
               Sell Here
             </Link>
           </div>
-          <div className="navbar-item" style={{color: "antiquewhite", cursor:"pointer"}}>
-            <Link to="/products">
+          <div className="navbar-item">
+            <Link to="/products" style={{color: "black", cursor:"pointer"}}>
               Products
             </Link>
           </div>
-          <div className="navbar-item" style={{color: "antiquewhite", cursor:"pointer"}}>
-            <Link to="/your-order">
-              Your Orders
+          <div className="navbar-item">
+            <Link to="/your-order" style={{color: "black", cursor:"pointer"}}>
+              Your Products
             </Link>
           </div>
           <div className="navbar-item has-dropdown is-hoverable">
-            <div className="navbar-link" style={{color: "antiquewhite", cursor:"pointer"}}>
+            <div className="navbar-link" style={{color: "black", cursor:"pointer"}}>
               More
             </div>
 
             <div className="navbar-dropdown">
-              <div className="navbar-item" style={{cursor:"pointer"}}>
+              <div className="navbar-item" style={{color: "black", cursor:"pointer"}}>
                 <Link to="/about">
                   About
                 </Link>
               </div>
               <hr className="navbar-divider"/>
-              <div className="navbar-item" style={{cursor:"pointer"}}>
+              <div className="navbar-item" style={{color: "black", cursor:"pointer"}}>
                 <Link to="/contact">
                   Contact Us
                 </Link>
@@ -63,9 +64,12 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-
+        {isCartClicked?<ShoppingCart/>:null}
         <div className="navbar-end">
           <div className="navbar-item">
+            <div onClick style={{marginRight:"30", cursor:"pointer"}} onClick={e=>isCartClicked?setCartClicked(false):setCartClicked(true)}> 
+              <img  src="https://img.icons8.com/pastel-glyph/64/000000/shopping-cart--v1.png" />
+            </div>
             <div className="buttons">
               <Link to="signup">
                 <div className="button is-primary">

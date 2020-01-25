@@ -1,0 +1,15 @@
+.sell-here{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  background-color: #758184;
+  z-index:-45;
+}
+
+#sell-here-box{
+  position: absolute;
+}
