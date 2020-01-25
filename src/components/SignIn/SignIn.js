@@ -1,8 +1,10 @@
 import React from 'react';
 import './signin.css'
+
 const SignIn = () => {
   return (
-    <div className="box">
+    <div className="layer-signin">
+      <div className="box">  
       <div className="gmail-signin">
         <button className="button is-danger">Signin with Gmail</button>
       </div>
@@ -12,8 +14,9 @@ const SignIn = () => {
         <label>Password</label>
           <input className="input is-rounded" type="text" placeholder="Enter password"/>
         <button className="button is-primary is-rounded">Submit</button>
-        <button className="button is-rounded">SignUp</button>  
+        <button id="signup" className="button is-rounded">SignUp</button>  
       </form>
+      </div>
     </div>
   );
 }

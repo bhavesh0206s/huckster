@@ -17,7 +17,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -4;
+
 }
 
 #buy-online{
@@ -35,3 +35,13 @@
   color: antiquewhite;
 }
 
+.signin{
+  position: fixed;
+  z-index: 100;
+}
+
+@media only screen and (max-width: 600px) {
+  .signin{
+    padding-left: 30px;
+  }
+}
