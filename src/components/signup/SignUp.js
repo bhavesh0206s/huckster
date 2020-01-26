@@ -1,28 +1,12 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import './signup.css'
-import fire from '../../firebase';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { SigninContext } from '../../context/SigninContext';
 
-const SignUp = (props) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = useCallback( async event =>{
-    event.preventDefault();
-    try{
-      console.log(typeof email,password)
-      await fire
-            .auth()
-            .createUserWithEmailAndPassword(email, password)
-      props.history.push('/')
-      setEmail('')
-      setPassword('')
-    }
-    catch(e){
-      console.log('error ',e)
-    }
-  },[email,password,props.history])
+const Signup = (props) => {
+  
+  const {handleSignup, passwordError, setEmail, setPassword} = useContext(SigninContext);
 
   return (
     <div className="layer-signin">
@@ -31,11 +15,12 @@ const SignUp = (props) => {
       <div className="gmail-signup">
         <button className="button is-danger">Signup with Gmail</button>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSignup}>
         <label>Email</label>
           <input className="input is-rounded" type="email" placeholder="Enter your email" onChange={e=>setEmail(e.target.value)}/>
         <label>Password</label>
           <input id="submit" className="input is-rounded" type="password" placeholder="Enter password" onChange={e=>setPassword(e.target.value)}/>
+          <h4 style={{color:"red"}}>{passwordError}</h4>
         <button className="button is-primary is-rounded">Submit</button>
         <Link to="/signin">
           <button id="signin" className="button is-rounded">Login</button>  
@@ -46,4 +31,4 @@ const SignUp = (props) => {
   );
 }
  
-export default SignUp;
+export default Signup;

@@ -5,14 +5,25 @@ import { Link } from 'react-router-dom';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import fire from '../../firebase';
 
 
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const {currentUser} = useContext(AuthContext)
   const [isCartClicked, setCartClicked] = useState(false);
+
   const toggleCart = ()=>{
     setCartClicked(!isCartClicked)
   }
+
+  const logout = async () =>{
+    await fire.auth().signOut();
+    props.history.push('/')
+  }
+
   useEffect(()=>{
     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
@@ -35,6 +46,7 @@ const Navbar = () => {
       });
     }
   },[])
+  
   return (
     <nav className="navbar main" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -91,23 +103,33 @@ const Navbar = () => {
         </div>
         {isCartClicked?<ShoppingCart/>:null}
         <div className="navbar-end">
-          <div className="navbar-item">
-            <div style={{marginRight:"30", cursor:"pointer"}} onClick={toggleCart}> 
-              <img  src="https://img.icons8.com/pastel-glyph/64/000000/shopping-cart--v1.png" alt="cart" />
-            </div>
-            <div className="buttons">
-              <Link to="signup">
+          {currentUser ? 
+            (
+              <div className="navbar-item">
+                <div style={{marginRight:"100", cursor:"pointer"}} onClick={toggleCart}> 
+                  <img  src="https://img.icons8.com/pastel-glyph/64/000000/shopping-cart--v1.png" alt="cart" />
+                </div>
                 <div className="button is-primary">
-                  <strong>Sign up</strong>
+                  <strong onClick={logout}>Log Out</strong>
                 </div>
-              </Link>
-              <Link to="signin">
-                <div className="button is-light">
-                  Log in
+              </div>
+            ):
+            (
+              <div className="navbar-item">
+                <div className="buttons">
+                  <Link to="signup">
+                    <div className="button is-primary" style={{paddingRight:"50"}}>
+                      <strong>Sign up</strong>
+                    </div>
+                  </Link>
+                  <Link to="signin">
+                    <div className="button is-light">
+                      Log in
+                    </div>
+                  </Link>
                 </div>
-              </Link>
-            </div>
-          </div>
+              </div>
+            )}
         </div>
       </div>
     </nav>

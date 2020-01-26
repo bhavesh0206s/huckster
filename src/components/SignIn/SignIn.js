@@ -1,23 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import { useState } from 'react';
 import './signin.css';
-import fire from '../../firebase';
+import { useContext } from 'react';
+import { SigninContext } from '../../context/SigninContext';
 
-const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleSubmit = async (event) =>{
-    event.preventDefault();
-    try{
-      await fire.auth().signInWithEmailAndPassword(email, password)
-    }
-    catch(e){
-      console.log(e)
-    }
-  }
-
+const Signin = (props) => {
+  const {handleSignin, setPassword, setEmail} = useContext(SigninContext)
   return (
     <div className="layer-signin">
       <div className="box animated bounceInDown">
@@ -25,7 +14,7 @@ const SignIn = () => {
       <div className="gmail-signin">
         <button className="button is-danger">Login with Gmail</button>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSignin}>
         <label>Email</label> 
           <input className="input is-rounded" type="email" placeholder="Enter email" onChange={e=>setEmail(e.target.value)}/>
         <label>Password</label>
@@ -40,4 +29,4 @@ const SignIn = () => {
   );
 }
  
-export default SignIn;
+export default Signin;

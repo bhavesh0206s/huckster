@@ -6,21 +6,18 @@ import app from '../firebase'
 export const AuthContext = createContext()
 
 const AuthContextProvider = (props) => {
-  const [currentUser, setCurrentUser] = useState('')
+  const [currentUser, setCurrentUser] = useState(null)
 
   useEffect(()=>{
     app.auth().onAuthStateChanged((user)=>{
       if(user){
-        user.updateProfile({
-          displayName: currentUser
-        }).then(()=>{
-          console.log(user.displayName)
-          setCurrentUser(user.displayName);
-        })
+        setCurrentUser(user)
+      }
+      else{
+        setCurrentUser(null)
       }
     })
   },[currentUser])
-
   return (
     <AuthContext.Provider value={{currentUser}}>
       {props.children}

@@ -20,7 +20,7 @@ const ShoppingCart = () => {
           Clay Art
         </div>
         <div id="quantity">
-          <p>-</p>10<p>+</p> 
+          <p className="quantiy-change">-</p>10<p className="quantiy-change">+</p> 
         </div>
         <div>
           $10
