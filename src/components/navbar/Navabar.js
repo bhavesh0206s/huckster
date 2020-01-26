@@ -1,15 +1,40 @@
 import React from 'react';
 import './navbar.css'
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 
 const Navbar = () => {
-  const [isCartClicked, setCartClicked] = useState(false)
+  const [isCartClicked, setCartClicked] = useState(false);
+  const toggleCart = ()=>{
+    setCartClicked(!isCartClicked)
+  }
+  useEffect(()=>{
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
+    // Check if there are any navbar burgers
+    if ($navbarBurgers.length > 0) {
+
+      // Add a click event on each of them
+      $navbarBurgers.forEach( el => {
+        el.addEventListener('click', () => {
+
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+
+        });
+      });
+    }
+  },[])
   return (
     <nav className="navbar main" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -67,8 +92,8 @@ const Navbar = () => {
         {isCartClicked?<ShoppingCart/>:null}
         <div className="navbar-end">
           <div className="navbar-item">
-            <div onClick style={{marginRight:"30", cursor:"pointer"}} onClick={e=>isCartClicked?setCartClicked(false):setCartClicked(true)}> 
-              <img  src="https://img.icons8.com/pastel-glyph/64/000000/shopping-cart--v1.png" />
+            <div style={{marginRight:"30", cursor:"pointer"}} onClick={toggleCart}> 
+              <img  src="https://img.icons8.com/pastel-glyph/64/000000/shopping-cart--v1.png" alt="cart" />
             </div>
             <div className="buttons">
               <Link to="signup">

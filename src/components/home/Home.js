@@ -1,9 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import './home.css'
-import SignIn from '../signIn/SignIn';
-import SignUp from '../signup/SignUp';
-import { useState } from 'react';
 import Footer from '../footer/Footer';
 
 
