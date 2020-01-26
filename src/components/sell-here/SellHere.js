@@ -4,7 +4,8 @@ import './sellhere.css'
 const SellHere = () => {
   return (
     <div className="sell-here">
-      <div className="box" id="sell-here-box">  
+      <h1 className="sell-product-text animated bounceInLeft">Sell Your Product With Us</h1>
+      <div className="box animated bounceInDown" id="sell-here-box">  
       <form>
         <label>Product Name</label>
           <input className="input is-rounded" type="text" placeholder="Enter product name"/>

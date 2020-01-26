@@ -4,7 +4,7 @@ import './signin.css'
 const SignIn = () => {
   return (
     <div className="layer-signin">
-      <div className="box">  
+      <div className="box animated bounceInDown">  
       <div className="gmail-signin">
         <button className="button is-danger">Signin with Gmail</button>
       </div>

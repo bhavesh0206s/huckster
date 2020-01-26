@@ -22,7 +22,7 @@
 #buy-online{
   text-transform: uppercase;
   color: antiquewhite;
-  font-size: 2em;
+  font-size: 1.2em;
 }
 
 #title{
@@ -30,8 +30,17 @@
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
-  font-size: 10rem;
+  font-size: 7rem;
   color: antiquewhite;
+}
+
+#shop-now{
+  font-size: 2em;
+  background-color: #706c61;
+  width: 250px;
+}
+#shop-now:hover{
+  background-color: #b3afa7;;
 }
 
 .signin{

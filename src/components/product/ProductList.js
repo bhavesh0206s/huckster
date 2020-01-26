@@ -4,8 +4,8 @@ import './product-list.css'
 const ProductList = () => {
   return (
     <div className="grid" >
-      <div className="columns is-mobile">
-        <div className="column">
+      <div className="columns">
+        <div className="column animated pulse">
           <div className="card">
             <div className="card-content">
               <p className="title">
@@ -25,7 +25,7 @@ const ProductList = () => {
             </footer>
           </div>
         </div>
-        <div className="column">
+        <div className="column animated pulse">
           <div className="card">
             <div className="card-content">
               <p className="title">
@@ -45,7 +45,7 @@ const ProductList = () => {
             </footer>
           </div>
         </div>
-        <div className="column">
+        <div className="column animated pulse">
           <div className="card">
             <div className="card-content">
               <p className="title">
@@ -65,7 +65,7 @@ const ProductList = () => {
             </footer>
           </div>
         </div>
-        <div className="column">
+        <div className="column animated pulse">
         <div className="card">
           <div className="card-content">
             <p className="title">
@@ -86,8 +86,8 @@ const ProductList = () => {
         </div>
       </div>
       </div>
-      <div className="columns is-mobile">
-        <div className="column">
+      <div className="columns">
+        <div className="column animated pulse">
           <div className="card">
             <div className="card-content">
               <p className="title">
@@ -107,7 +107,7 @@ const ProductList = () => {
             </footer>
           </div>
         </div>
-        <div className="column">
+        <div className="column animated pulse">
           <div className="card">
             <div className="card-content">
               <p className="title">
@@ -127,7 +127,7 @@ const ProductList = () => {
             </footer>
           </div>
         </div>
-        <div className="column">
+        <div className="column animated pulse">
           <div className="card">
             <div className="card-content">
               <p className="title">
@@ -147,7 +147,7 @@ const ProductList = () => {
             </footer>
           </div>
         </div>
-        <div className="column">
+        <div className="column animated pulse">
         <div className="card">
           <div className="card-content">
             <p className="title">

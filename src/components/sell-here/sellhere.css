@@ -13,3 +13,11 @@
 #sell-here-box{
   position: absolute;
 }
+
+.sell-product-text{
+  position: relative;
+  font-size: 2em;
+  padding-top: 10px;
+  height: 100vh;
+  text-transform: uppercase;
+}

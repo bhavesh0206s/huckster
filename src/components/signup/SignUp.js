@@ -3,7 +3,7 @@ import './signup.css'
 const SignUp = () => {
   return (
     <div className="layer-signin">
-      <div className="box" id="signup-box">  
+      <div className="box animated bounceInDown" id="signup-box">  
       <div className="gmail-signup">
         <button className="button is-danger">Signup with Gmail</button>
       </div>

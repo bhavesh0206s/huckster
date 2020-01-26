@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import {BrowserRouter as Router, Switch ,Route, Redirect} from 'react-router-dom'
+import React from 'react';
+import {BrowserRouter as Router, Switch ,Route} from 'react-router-dom'
 import Navbar from './components/navbar/Navabar';
 import Home from './components/home/Home';
 import About from './components/about/About';
