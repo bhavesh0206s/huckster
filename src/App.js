@@ -8,30 +8,26 @@ import ProductList from './components/product/ProductList';
 import Signup from './components/signup/Signup';
 import Signin from './components/signIn/Signin';
 import SellHere from './components/sell-here/SellHere';
-import AuthContextProvider from './context/AuthContext';
-import SiginContextProvider from './context/SigninContext';
-import SignupContextProvider from './context/SignupContext';
+import PrivateRoute from './components/PrivateRoute';
+import { useContext } from 'react';
+import { AuthContext } from './context/AuthContext';
+
 
 const App = (props)=>{
-  return(
-    <AuthContextProvider>
-    <SiginContextProvider>
-    <SignupContextProvider>
+  const {currentUser, getUid} = useContext(AuthContext)
+  return(   
       <Router>
           <Navbar/>
           <Switch>
-            <Route path="/" exact component = {Home}/>
+            <Route path={!currentUser ? '/' : `/${getUid()}`} exact component = {Home}/>
             <Route path="/signin" component={Signin}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/products" component={ProductList}/>
             <Route path="/about" component={About}/>
-            <Route path="/sell" component={SellHere}/>
+            <PrivateRoute path={`/sell/${getUid()}`} component={SellHere}/>
             <Route component={Notfound} />
           </Switch>
       </Router>
-    </SignupContextProvider>
-    </SiginContextProvider>
-    </AuthContextProvider>
   )
 }
 

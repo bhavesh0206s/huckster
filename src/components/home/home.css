@@ -33,7 +33,11 @@
   font-size: 7rem;
   color: antiquewhite;
 }
+#username{
+  color: #706c61;
+  font-size: 2em;
 
+}
 #shop-now{
   font-size: 2em;
   background-color: #706c61;

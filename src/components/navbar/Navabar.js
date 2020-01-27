@@ -1,32 +1,28 @@
-import React from 'react';
+import React,{ useState, useEffect, useContext } from 'react';
 import './navbar.css'
-// import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter} from 'react-router-dom';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import fire from '../../firebase';
 
 
 
+
 const Navbar = (props) => {
-  const {currentUser} = useContext(AuthContext)
+  const {currentUser, getUid} = useContext(AuthContext)
   const [isCartClicked, setCartClicked] = useState(false);
 
   const toggleCart = ()=>{
     setCartClicked(!isCartClicked)
   }
 
-  const logout = async () =>{
-    await fire.auth().signOut();
+  const logout = () => {
+    fire.auth().signOut();
     props.history.push('/')
   }
 
   useEffect(()=>{
     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
     // Check if there are any navbar burgers
     if ($navbarBurgers.length > 0) {
 
@@ -45,13 +41,13 @@ const Navbar = (props) => {
         });
       });
     }
-  },[])
+  })
   
   return (
     <nav className="navbar main" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <div className="navbar-item">
-          <Link to="/" >  
+          <Link to={!currentUser ? '/' : `/${getUid()}`} >  
             <img id="icon" src="https://img.icons8.com/color/50/000000/potters-wheel.png" alt="artisanship"/>
             <strong id="company-name" style={{color: "antiquewhite"}}>Artisanship</strong>
           </Link>
@@ -67,7 +63,7 @@ const Navbar = (props) => {
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
           <div className="navbar-item">
-            <Link to="/sell" style={{color: "black", cursor:"pointer"}}>
+            <Link to={`/sell/${getUid()}`} style={{color: "black", cursor:"pointer"}}>
               Sell Here
             </Link>
           </div>
@@ -136,4 +132,4 @@ const Navbar = (props) => {
   );
 }
  
-export default Navbar;
+export default withRouter(Navbar);
