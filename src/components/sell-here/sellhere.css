@@ -12,12 +12,19 @@
 
 #sell-here-box{
   position: absolute;
+  margin-top: 50px;
 }
 
-.sell-product-text{
+.sell-product-heading{
   position: relative;
   font-size: 2em;
-  padding-top: 10px;
+  padding-top: 20px;
   height: 100vh;
   text-transform: uppercase;
+}
+
+@media only screen and (max-width: 600px) {
+  .sell-product-heading{
+    font-size: 1.5em;
+  }
 }

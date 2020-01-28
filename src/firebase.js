@@ -1,8 +1,7 @@
 import * as firebase from 'firebase/app'
 import 'firebase/firestore';
 import 'firebase/auth';
-import { config } from '../config/config';
-
+import { config } from './config/config';
 
 var firebaseConfig = {
   apiKey: config.APIKEY,
@@ -14,6 +13,9 @@ var firebaseConfig = {
   appId: config.APPID,
   measurementId: config.MEASUREMENTID 
 };
+
 // Initialize Firebase
 const fire = firebase.initializeApp(firebaseConfig)
+export const fireDb = fire.firestore()
+
 export default fire;

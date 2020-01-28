@@ -15,19 +15,20 @@ import { AuthContext } from './context/AuthContext';
 
 const App = (props)=>{
   const {currentUser, getUid} = useContext(AuthContext)
-  return(   
-      <Router>
-          <Navbar/>
-          <Switch>
-            <Route path={!currentUser ? '/' : `/${getUid()}`} exact component = {Home}/>
-            <Route path="/signin" component={Signin}/>
-            <Route path="/signup" component={Signup}/>
-            <Route path="/products" component={ProductList}/>
-            <Route path="/about" component={About}/>
-            <PrivateRoute path={`/sell/${getUid()}`} component={SellHere}/>
-            <Route component={Notfound} />
-          </Switch>
-      </Router>
+
+  return(
+    <Router>
+        <Navbar/>
+        <Switch>
+          <Route path={!currentUser ? '/' : `/${getUid()}`} exact component = {Home}/>
+          <Route path="/signin" component={Signin}/>
+          <Route path="/signup" component={Signup}/>
+          <Route path="/products" component={ProductList}/>
+          <Route path="/about" component={About}/>
+          <PrivateRoute path={`/sell/${getUid()}`} component={SellHere}/>
+          <Route component={Notfound} />
+        </Switch>
+    </Router>
   )
 }
 
