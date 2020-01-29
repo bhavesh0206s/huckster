@@ -9,58 +9,46 @@ import fire from '../../firebase';
 
 
 const Navbar = (props) => {
-  const {currentUser, getUid} = useContext(AuthContext)
-  const [isCartClicked, setCartClicked] = useState(false);
-
-  const toggleCart = ()=>{
-    setCartClicked(!isCartClicked)
-  }
+  const {currentUser, getUid} = useContext(AuthContext);
+  const [isMenuHidden, setMenuHidden] = useState(false);
+  const [activeClass, setActiveClass] = useState('')
 
   const logout = () => {
     fire.auth().signOut();
     props.history.push('/')
   }
 
-  useEffect(()=>{
-    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-    // Check if there are any navbar burgers
-    if ($navbarBurgers.length > 0) {
-
-      // Add a click event on each of them
-      $navbarBurgers.forEach( el => {
-        el.addEventListener('click', () => {
-
-          // Get the target from the "data-target" attribute
-          const target = el.dataset.target;
-          const $target = document.getElementById(target);
-
-          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-          el.classList.toggle('is-active');
-          $target.classList.toggle('is-active');
-
-        });
-      });
-    }
-  })
+  const navbarHide = () => {
+      if(!isMenuHidden){
+        setActiveClass('is-active')
+        setMenuHidden(true);
+      }
+      else{
+        setActiveClass('')
+        setMenuHidden(false)
+      }
+    } 
   
+  const browserWidth = window.innerWidth;
+
   return (
-    <nav className="navbar main" role="navigation" aria-label="main navigation">
+    <nav className="navbar is-fixed-top main" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <div className="navbar-item">
           <Link to={!currentUser ? '/' : `/${getUid()}`} >  
             <img id="icon" src="https://img.icons8.com/color/50/000000/potters-wheel.png" alt="artisanship"/>
             <strong id="company-name" style={{color: "antiquewhite"}}>Artisanship</strong>
+            
           </Link>
         </div>
-
-        <div role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <div onClick={navbarHide} className={`navbar-burger burger ${activeClass}`} aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </div>
       </div>
 
-      <div id="navbarBasicExample" className="navbar-menu">
+      <div onClick={navbarHide} id="navbarBasicExample" className={`navbar-menu animated fadeIn ${activeClass}`}>
         <div className="navbar-start">
           <div className="navbar-item">
             <Link to={`/sell/${getUid()}`} style={{color: "black", cursor:"pointer"}}>
@@ -97,14 +85,12 @@ const Navbar = (props) => {
             </div>
           </div>
         </div>
-        {isCartClicked?<ShoppingCart/>:null}
+        <ShoppingCart/>
+        {/* {isCartClicked && browserWidth > 600 ?<ShoppingCart/>:null} */}
         <div className="navbar-end">
           {currentUser ? 
             (
               <div className="navbar-item">
-                <div style={{marginRight:"100", cursor:"pointer"}} onClick={toggleCart}> 
-                  <img  src="https://img.icons8.com/pastel-glyph/64/000000/shopping-cart--v1.png" alt="cart" />
-                </div>
                 <div className="button is-primary">
                   <strong onClick={logout}>Log Out</strong>
                 </div>

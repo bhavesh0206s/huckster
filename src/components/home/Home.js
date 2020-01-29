@@ -7,7 +7,10 @@ import { AuthContext } from '../../context/AuthContext';
 
 
 const Home = () => {
-  const {getUsername, currentUser} = useContext(AuthContext)
+  const {getUsername, currentUser} = useContext(AuthContext);
+
+  const browserWidth = window.innerWidth;
+
   return (
     <div className="home">
       <div className="layer">
