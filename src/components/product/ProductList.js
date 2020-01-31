@@ -1,58 +1,36 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext'
-import './product-list.css'
+import React from 'react';
+import Product from './Product'
+import { useContext } from 'react';
+import { fireDb } from '../../firebase';
+import { AuthContext } from '../../context/AuthContext';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
-const ProductList = (props) => {
+const ProductList = () => {
 
-  const {currentUser} = useContext(AuthContext)
-
-  const handleAddtoCart = () => {
-    if(!currentUser){
-      props.history.push('/signin')
-    }
-    else{
-      alert('Thank You')
-    }
+  const {getUid, currentUser} = useContext(AuthContext);
+  const [productInfo, setProductInfo] = useState([]);
+  
+  const updateProductList = () => {
+    let productRef = fireDb.collection('public-product-info')
+    productRef.onSnapshot(snap => {
+      const productData = snap.docs.map(doc => ({
+        ...doc.data()
+      }))
+      setProductInfo(productData)
+      console.log(productData)
+        
+      },error => console.log("Error getting document:", error))
   }
-
-  const handleBuyNow = () => {
-    if(!currentUser){
-      props.history.push('/signin')
-    }
-    else{
-      alert('Thank You')
-    }
-  }
+  useEffect(()=>{
+    updateProductList()
+  },[]);
 
   return (
-    <div className="grid" >
-      <div className="columns">
-        <div className="column animated pulse">
-          <div className="card">
-            <div className="card-content">
-              <p className="title">
-                <img src="https://n2.sdlcdn.com/imgs/h/d/o/Laying-Style-Multicolour-Ceramic-Handicraft-SDL523167947-1-07f5b.jpg" alt=""/>
-              </p>
-              <p className="subtitle">
-                Ceramic Handicraft Showpiece
-              </p>
-            </div>
-            <footer className="card-footer">
-              <p className="card-footer-item">
-                <button onClick={handleBuyNow} className="button is-primary is-inverted is-outlined" style={{backgroundColor:"#758184", color:'antiquewhite'}}>
-                  Buy Now
-                </button>
-              </p>
-              <p className="card-footer-item">
-                <button onClick={handleAddtoCart} className="button is-primary " style={{backgroundColor:"#5d5b6a", color:'antiquewhite'}}>
-                  Add to Cart
-                </button>
-              </p>
-            </footer>
-          </div>
-        </div>
-        
-      </div> 
+    <div>
+      {productInfo.map(info => 
+          <Product pricePerItem={info.price_per_item} productName={info.product_name} imageUrl={info.image_url} productDetails={info.product_details} />
+      )}
     </div>
   );
 }

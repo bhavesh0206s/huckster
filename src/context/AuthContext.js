@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
 import { useState } from 'react';
+import Cookies from 'js-cookie'
 import { useEffect } from 'react';
 import fire from '../firebase'
 
@@ -21,8 +22,9 @@ const AuthContextProvider = (props) => {
     })
   },[currentUser])
 
-  const signin = (email,password) => {
-    return fire.auth().signInWithEmailAndPassword(email,password)
+  const signin = async (email,password) => {
+    await fire.auth().signInWithEmailAndPassword(email,password);
+    // Cookies.set('user', `${getUid()}`)
   }
 
   const signup = async (email, password, name) =>{

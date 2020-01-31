@@ -1,8 +1,9 @@
 #cart{
   min-height: 50px;
-  margin-top: 20px;
+  margin-top: 5px;
   position: absolute;
-  margin: 8px 0px 0px 700px;
+  right: 1px;
+  /* margin: 8px 0px 0px 700px; */
 }
 #quantity{
   display: flex;
@@ -18,6 +19,12 @@
   cursor: pointer;
 }
 
+.shop-cart{
+  background-color: #5d5b6a; 
+  border-radius: 50%;
+  min-height: 50px;
+}
+
 .quantiy-change:hover{
   color: aliceblue;
   background: rgb(41, 39, 39,0.8);
@@ -31,3 +38,4 @@
   display: flex;
   justify-content: space-around;
 }
+

@@ -1,5 +1,6 @@
 import React, { useState, useContext  } from 'react';
-import {Link, Redirect} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom';
+
 import './signin.css';
 import { AuthContext } from '../../context/AuthContext';
 
@@ -11,7 +12,7 @@ const Signin = (props) => {
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    signin(email, password)
+    signin(email, password);
   }
   if(redirect){
     return <Redirect to={`/${getUid()}`} />

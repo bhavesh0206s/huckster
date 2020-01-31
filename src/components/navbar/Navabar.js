@@ -3,6 +3,7 @@ import './navbar.css'
 import { Link, withRouter} from 'react-router-dom';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import { AuthContext } from '../../context/AuthContext';
+import Cookies from 'js-cookie';
 import fire from '../../firebase';
 
 
@@ -15,7 +16,8 @@ const Navbar = (props) => {
 
   const logout = () => {
     fire.auth().signOut();
-    props.history.push('/')
+    props.history.push('/');
+    Cookies.remove('user');
   }
 
   const navbarHide = () => {
@@ -85,7 +87,6 @@ const Navbar = (props) => {
             </div>
           </div>
         </div>
-        <ShoppingCart/>
         {/* {isCartClicked && browserWidth > 600 ?<ShoppingCart/>:null} */}
         <div className="navbar-end">
           {currentUser ? 

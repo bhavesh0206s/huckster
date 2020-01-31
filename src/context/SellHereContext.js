@@ -15,7 +15,19 @@ const SellHereContextProvider = (props) => {
 
   const addProductNametoDb = () =>{
     let userid =  fire.auth().currentUser.uid
-    fireDb.collection('product-info').doc(`${userid}`).set({
+    let privateProductRef = fireDb.collection('user').doc(`${userid}`);
+    privateProductRef.collection('product-info').add({
+      product_name: productName,
+      product_details: productDetails,
+      quantity: quantity,
+      price_per_item: pricePerItem,
+      image_url: imageUrl
+    })
+    .then(()=> alert('success'))
+    .catch((e)=> console.log(e))
+
+    let publicProductRef = fireDb.collection('public-product-info')
+    publicProductRef.add({
       product_name: productName,
       product_details: productDetails,
       quantity: quantity,

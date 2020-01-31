@@ -8,8 +8,10 @@ const ShoppingCart = () => {
     }
 
   return (
-    <div style={{marginRight:"100", cursor:"pointer"}} onClick={toggleCart}> 
-      <img id="shop-cart"  src="https://img.icons8.com/pastel-glyph/64/000000/shopping-cart--v1.png" alt="cart" />
+    <div style={{cursor:"pointer"}} onClick={toggleCart}>
+      <div className="button shop-cart">
+        <img src="https://img.icons8.com/pastel-glyph/40/000000/shopping-cart--v1.png" alt="cart" />
+      </div>
       {isCartClicked ? (
         <div className="box animated fadeIn" id="cart">
           <div className="heading">
