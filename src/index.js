@@ -3,14 +3,12 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import AuthContextProvider from './context/AuthContext';
-import SellHereContextProvider from './context/SellHereContext';
+
 
 
 ReactDOM.render(
   <AuthContextProvider>
-    <SellHereContextProvider>
-      <App />
-    </SellHereContextProvider>
+    <App />
   </AuthContextProvider>
   , document.getElementById('root'));
 

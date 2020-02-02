@@ -1,15 +1,40 @@
-.grid{
+.product-home{
   background-color: #758184;
+  height: 100vh;
+}
+.grid{
   margin-top: 56.5px;
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 .card{
   background-color: #cfb495;
   min-width: 100px;
-  min-height: 300px;
+  min-height: 200px;
   border-radius: 5px;
+  margin: 20px;
 }
 
-.columns{
-  padding: 20px 50px 0px 50px;
+.title img{
+  max-height: 180px;
 }
 
+.card:hover{
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+;
+}
+
+.buy-now,.add-to-cart{
+  margin: 0;
+}
+
+.subtitle{
+  margin-bottom: 0;
+}

@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/AuthContext';
 
 
 const Signup = (props) => {
-  const {signup, redirect, currentUser, getUid} = useContext(AuthContext);
+  const {signup, redirect, getUid} = useContext(AuthContext);
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,7 +33,6 @@ const Signup = (props) => {
             <input className="input is-rounded" type="email" placeholder="Enter your email" onChange={e => setEmail(e.target.value)} />
           <label>Password</label>
             <input id="submit" className="input is-rounded" type="password" placeholder="Enter password" onChange={e => setPassword(e.target.value)} />
-            <h4 style={{color:"red"}}></h4>
           <button className="button is-primary is-rounded">Submit</button>
           <Link to="/signin">
             <button id="signin" className="button is-rounded">Login</button>  

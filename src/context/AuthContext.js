@@ -1,6 +1,5 @@
 import React, { createContext } from 'react';
 import { useState } from 'react';
-import Cookies from 'js-cookie'
 import { useEffect } from 'react';
 import fire from '../firebase'
 

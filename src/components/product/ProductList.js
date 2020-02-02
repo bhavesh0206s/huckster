@@ -1,36 +1,48 @@
 import React from 'react';
 import Product from './Product'
 import { useContext } from 'react';
-import { fireDb } from '../../firebase';
 import { AuthContext } from '../../context/AuthContext';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import './product.css'
+import { ProductContext } from '../../context/ProductContext';
 
-const ProductList = () => {
+const ProductList = (props) => {
 
-  const {getUid, currentUser} = useContext(AuthContext);
-  const [productInfo, setProductInfo] = useState([]);
-  
-  const updateProductList = () => {
-    let productRef = fireDb.collection('public-product-info')
-    productRef.onSnapshot(snap => {
-      const productData = snap.docs.map(doc => ({
-        ...doc.data()
-      }))
-      setProductInfo(productData)
-      console.log(productData)
-        
-      },error => console.log("Error getting document:", error))
+  const {currentUser} = useContext(AuthContext);
+  const {productInfo} = useContext(ProductContext)
+
+  const handleAddtoCart = () => {
+    if(!currentUser){
+      props.history.push('/signin')
+    }
+    else{
+      alert('Thank You')
+    }
   }
-  useEffect(()=>{
-    updateProductList()
-  },[]);
+
+  const handleBuyNow = () => {
+    if(!currentUser){
+      props.history.push('/signin')
+    }
+    else{
+      alert('Thank You')
+    }
+  }
 
   return (
-    <div>
-      {productInfo.map(info => 
-          <Product pricePerItem={info.price_per_item} productName={info.product_name} imageUrl={info.image_url} productDetails={info.product_details} />
-      )}
+    <div className="product-home">
+      <div className="grid" >
+        {productInfo.map(info => 
+            <Product 
+              key={info.id}
+              pricePerItem={info.price_per_item} 
+              productName={info.product_name} 
+              imageUrl={info.image_url} 
+              productDetails={info.product_details}
+              handleAddtoCart={handleAddtoCart}
+              handleBuyNow={handleBuyNow} 
+            />
+        )}  
+      </div>
     </div>
   );
 }

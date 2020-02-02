@@ -6,7 +6,7 @@ import { AuthContext } from '../../context/AuthContext';
 
 
 const Signin = (props) => {
-  const {signin, redirect,currentUser, getUid} = useContext(AuthContext);
+  const {signin, redirect, getUid} = useContext(AuthContext);
   const [email, getEmail] = useState('');
   const [password, getPassword] = useState('');
 

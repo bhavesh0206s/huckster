@@ -1,7 +1,6 @@
-import React,{ useState, useEffect, useContext } from 'react';
+import React,{ useState, useContext } from 'react';
 import './navbar.css'
 import { Link, withRouter} from 'react-router-dom';
-import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import { AuthContext } from '../../context/AuthContext';
 import Cookies from 'js-cookie';
 import fire from '../../firebase';
@@ -30,8 +29,6 @@ const Navbar = (props) => {
         setMenuHidden(false)
       }
     } 
-  
-  const browserWidth = window.innerWidth;
 
   return (
     <nav className="navbar is-fixed-top main" role="navigation" aria-label="main navigation">
@@ -63,7 +60,7 @@ const Navbar = (props) => {
             </Link>
           </div>
           <div className="navbar-item">
-            <Link to="/your-order" style={{color: "black", cursor:"pointer"}}>
+            <Link to={`/your-product/${getUid()}`} style={{color: "black", cursor:"pointer"}}>
               Your Products
             </Link>
           </div>

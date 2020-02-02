@@ -10,13 +10,16 @@ import Signin from './components/signIn/Signin';
 import SellHere from './components/sell-here/SellHere';
 import PrivateRoute from './components/PrivateRoute';
 import { useContext } from 'react';
-import Cookies from 'js-cookie';
 import { AuthContext } from './context/AuthContext';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
+import YourProductList from './components/yourProduct/YourProductList';
+import SellHereContextProvider from './context/SellHereContext';
+import YourProductContextProvider from './context/YourProductContext';
+import ProductContextProvider from './context/ProductContext';
 import './App.css'
 
 const App = (props)=>{
-  const {currentUser, getUid, firebaseIsInitialized} = useContext(AuthContext);
+  const {currentUser, getUid} = useContext(AuthContext);
   // const sessionUser = Cookies.get('user')
 
   return(
@@ -28,13 +31,20 @@ const App = (props)=>{
           </div>
         ): null}
         <Switch>
-          <Route path={!(currentUser) ? '/' : `/${getUid()}`} exact component = {Home}/>
-          <Route path="/signin" component={Signin}/>
-          <Route path="/signup" component={Signup}/>
-          <Route path="/products" component={ProductList}/>
-          <Route path="/about" component={About}/>
-          <PrivateRoute path={`/sell/${getUid()}`} component={SellHere}/>
-          <Route component={Notfound} />
+            <Route path={!(currentUser) ? '/' : `/${getUid()}`} exact component = {Home}/>
+            <Route path="/signin" component={Signin}/>
+            <Route path="/signup" component={Signup}/>
+          <SellHereContextProvider>
+            <ProductContextProvider>
+              <Route path="/products" component={ProductList}/>
+            </ProductContextProvider>
+            <Route path="/about" component={About}/>
+            <PrivateRoute path={`/sell/${getUid()}`} component={SellHere}/>
+            <YourProductContextProvider>
+              <PrivateRoute path={`/your-product/${getUid()}`} component={YourProductList}/>
+            </YourProductContextProvider>
+          </SellHereContextProvider>
+            <Route component={Notfound} />
         </Switch>
     </Router>
   )

@@ -2,11 +2,10 @@ import React from 'react';
 import './sellhere.css'
 import { useContext } from 'react';
 import { SellHereContext } from '../../context/SellHereContext';
-import { useEffect } from 'react';
 
 const SellHere = () => {
-  const {setImageUrl,setProductName,setProductDetails,setQuantity,setPricePerItem, handleSubmit,emptyAllField}  = useContext(SellHereContext)
-  
+  const {isLoading, setImageUrl,setProductName,setProductDetails,setPricePerItem, handleSubmit,emptyAllField}  = useContext(SellHereContext)
+
   return (
     <div className="sell-here">
       <h1 className="sell-product-heading animated bounceInLeft">Sell Your Product With Us</h1>
@@ -16,10 +15,8 @@ const SellHere = () => {
             <input onChange={e=>setProductName(e.target.value)} className="input is-rounded" type="text" placeholder="Enter product name"/>
           <label className="label">Product Image Url</label>
           <input onChange={e=>setImageUrl(e.target.value)} className="input is-rounded" type="text" placeholder="URL for your product image"/>
-            {/* <input className="input is-rounded" type="file" name="pic" accept="image/*"/> */}
-          <label className="label">Quantity</label>
-            <input onChange={e=>setQuantity(e.target.value)} className="input is-rounded" type="number" placeholder="Enter quantiy"/>
-          <label className="label">Price per Item</label>
+            {/* <input className="input is-rounded" type="file" name="pic" accept="image/*" onChange={readFileLocation} id="image-file"/> */}
+          <label className="label">Price</label>
             <input  onChange={e=>setPricePerItem(e.target.value)} className="input is-rounded" type="number" placeholder="Enter price"/>
           <label className="label">Product Details</label>
             <div className="control">
