@@ -23,17 +23,17 @@ const YourProduct = (props) => {
             <img src={props.imageUrl} alt={props.productName} width="300" height="200"/>
           </p>
         </div>
-        <div style={{display:"flex", justifyContent:"space-around"}}>
-          <p className="subtitle">
-            {props.productName}
-          </p>
-          <p className="subtitle">
-            <strong>
-              &#8377;
-              {props.pricePerItem}
-            </strong>
-          </p>
-        </div>
+        <div style={{display:"flex" ,justifyContent:"space-around"}}> 
+            <div className="subtitle product-name">
+              {props.productName}
+            </div>
+            <div className="subtitle">
+              <strong>
+                &#8377;
+                {props.pricePerItem}
+              </strong>
+            </div>
+          </div>
         <footer className="card-footer">
           <p className="card-footer-item">
             <button onClick={toggleDetail} className="button is-primary is-inverted is-outlined buy-now" style={{backgroundColor:"#758184", color:'antiquewhite'}}>

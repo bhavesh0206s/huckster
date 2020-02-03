@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import './product.css'
 import { ProductContext } from '../../context/ProductContext';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
 
 const ProductList = (props) => {
 
@@ -15,7 +16,7 @@ const ProductList = (props) => {
       props.history.push('/signin')
     }
     else{
-      alert('Thank You')
+      
     }
   }
 

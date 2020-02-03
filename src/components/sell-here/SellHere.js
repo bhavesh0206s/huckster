@@ -12,15 +12,15 @@ const SellHere = () => {
       <div className="box animated bounceInDown" id="sell-here-box">  
         <form onSubmit={handleSubmit}>
           <label className="label">Product Name</label>
-            <input onChange={e=>setProductName(e.target.value)} className="input is-rounded" type="text" placeholder="Enter product name"/>
+            <input onChange={e=>setProductName(e.target.value)} className="input is-rounded" required type="text" placeholder="Enter product name"/>
           <label className="label">Product Image Url</label>
-          <input onChange={e=>setImageUrl(e.target.value)} className="input is-rounded" type="text" placeholder="URL for your product image"/>
+          <input onChange={e=>setImageUrl(e.target.value)} className="input is-rounded" type="text" required placeholder="URL for your product image"/>
             {/* <input className="input is-rounded" type="file" name="pic" accept="image/*" onChange={readFileLocation} id="image-file"/> */}
           <label className="label">Price</label>
-            <input  onChange={e=>setPricePerItem(e.target.value)} className="input is-rounded" type="number" placeholder="Enter price"/>
+            <input  onChange={e=>setPricePerItem(e.target.value)} className="input is-rounded" required type="number" placeholder="Enter price"/>
           <label className="label">Product Details</label>
             <div className="control">
-              <textarea onChange={e=>setProductDetails(e.target.value)} className="textarea" placeholder="Enter your product details"></textarea>
+              <textarea onChange={e=>setProductDetails(e.target.value)} className="textarea" required placeholder="Enter your product details"></textarea>
             </div>
           <div className="field is-grouped">
             <div className="control">

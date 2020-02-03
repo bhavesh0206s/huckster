@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './shoppingcart.css'
 
-const ShoppingCart = () => {
+const ShoppingCart = (props) => {
   const [isCartClicked, setCartClicked] = useState(false);
   const toggleCart = ()=>{
       setCartClicked(!isCartClicked)
@@ -19,21 +19,17 @@ const ShoppingCart = () => {
               Items
             </div>
             <div>
-              Quatity
-            </div>
-            <div>
               Price
             </div>
           </div>
           <div className="products">
             <div>
-              Clay Art
-            </div>
-            <div id="quantity">
-              <p className="quantiy-change">-</p>10<p className="quantiy-change">+</p> 
+            dasd
+              {props.addedItem}
             </div>
             <div>
-              $10
+            dasd
+              {props.priceOfItem}
             </div>
           </div>
         </div>

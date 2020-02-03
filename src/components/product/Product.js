@@ -7,19 +7,19 @@ const ProductList = (props) => {
     <div className="card">
           <div className="card-content">
             <p className="title">
-              <img src={props.imageUrl} alt={props.productName} width="300" height="200"/>
+              <img src={props.imageUrl} alt={props.productName} width="300" height="400"/>
             </p>
           </div>
-          <div style={{display:"flex", justifyContent:"space-around"}}>
-            <p className="subtitle">
+          <div style={{display:"flex" ,justifyContent:"space-around"}}> 
+            <div className="subtitle product-name">
               {props.productName}
-            </p>
-            <p className="subtitle">
+            </div>
+            <div className="subtitle">
               <strong>
                 &#8377;
                 {props.pricePerItem}
               </strong>
-            </p>
+            </div>
           </div>
           <footer className="card-footer">
             <p className="card-footer-item">

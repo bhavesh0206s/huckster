@@ -18,24 +18,21 @@ const SellHereContextProvider = (props) => {
     product_name: productName,
     product_details: productDetails,
     price_per_item: pricePerItem,
-    image_url: imageUrl
+    image_url: imageUrl,
+    date: new Date()
   }
 
   const addPublicProducttoDb =  (userid) =>{
     let privateProductRef = fireDb.collection('user').doc(`${userid}`).collection('product-info');
-    privateProductRef.get().then(snap => {
+    privateProductRef.orderBy('date').get().then(snap => {
       let getIds =  snap.docs.map(doc => ({
         id: doc.id
       }));
-      console.log(getIds)
-      getIds.forEach(({id}) => {
-        
-      })
-      let publicProductRef = fireDb.collection('public-product-info').doc(getIds[getIds.length-1].id)
-        publicProductRef.set(totalData)
-        .then(()=> console.log('succes'))
-        .catch((e)=> console.log(e))
-    }, err=> console.log(err))
+      let publicProductRef = fireDb.collection('public-product-info')
+      publicProductRef.doc(getIds[getIds.length-1].id).set(totalData)
+      .then(()=> console.log('succes'))
+      .catch((e)=> console.log(e))
+    }).catch(e=>console.log(e))
   }
 
   const addProducttoDb = () =>{
