@@ -4,11 +4,11 @@ const Footer = () => {
   return (
     <div style={{backgroundColor:"#706c61"}}>
       <footer style={{display:"flex", justifyContent:"space-around"}}>
-            <div style={{color:"white"}}>
+            <div style={{color:"white", fontSize:".75rem"}}>
               Copyright &copy; 2020 Artisanship
             </div>
-            <div style={{color:"white"}}>
-              Made with &hearts; by <a href="https://github.com/bhavesh0206s">Bhavesh Suthar</a>
+            <div style={{color:"white", fontSize:".75rem"}}>
+              Made with &hearts; by <a href="https://github.com/bhavesh0206s" style={{ color: 'inherit'}}>Bhavesh Suthar</a>
             </div>
       </footer>
     </div>

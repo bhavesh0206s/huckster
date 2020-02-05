@@ -22,10 +22,10 @@ const YourProductContextProvider = (props) => {
     }, err => console.log(err))
   }
 
-  const deleteItem = () =>{
+  const deleteItem = (e) =>{
     let userid =  fire.auth().currentUser.uid
 
-    let docId = document.querySelector('.delete-btn').value
+    let docId = e.target.value;
 
     let productRef = fireDb.collection('user').doc(`${userid}`);
     productRef.collection('product-info').doc(docId).delete().then(()=>{

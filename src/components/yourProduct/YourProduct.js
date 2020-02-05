@@ -8,13 +8,14 @@ const YourProduct = (props) => {
 
   const toggleDetail = () => {
     setIsDetail(!isDetail)
+    console.log(props.yourProductInfo)
   } 
   
   return (
-    <div>
+    <div >
       <div style={{margin: "100"}}>
         {isDetail ? (
-          <YourProductDetails imageUrl={props.imageUrl} productName={props.productName} productDetails={props.productDetails}  toggleDetail={toggleDetail}/>
+          <YourProductDetails price={props.pricePerItem} imageUrl={props.imageUrl} productName={props.productName} productDetails={props.productDetails}  toggleDetail={toggleDetail}/>
         ) : null}
       </div>
       <div className="card">

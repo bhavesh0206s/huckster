@@ -30,7 +30,7 @@ const SellHereContextProvider = (props) => {
       }));
       let publicProductRef = fireDb.collection('public-product-info')
       publicProductRef.doc(getIds[getIds.length-1].id).set(totalData)
-      .then(()=> console.log('succes'))
+      .then(()=> setIsLoading(false))
       .catch((e)=> console.log(e))
     }).catch(e=>console.log(e))
   }
@@ -45,6 +45,7 @@ const SellHereContextProvider = (props) => {
 
   const handleSubmit = (e) =>{
     e.preventDefault();
+    setIsLoading(true)
     addProducttoDb();
     emptyAllField()
   }

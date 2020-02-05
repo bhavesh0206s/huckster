@@ -8,6 +8,8 @@ export const AuthContext = createContext()
 const AuthContextProvider = (props) => {
   const [currentUser, setCurrentUser] = useState(null)
   const [redirect, setRedirect] = useState(false)
+  const [isLoading, setLoading] = useState(false)
+  
   useEffect(()=>{
     fire.auth().onAuthStateChanged((user)=>{
       if(user){
@@ -22,13 +24,17 @@ const AuthContextProvider = (props) => {
   },[currentUser])
 
   const signin = async (email,password) => {
+    setLoading(true)
     await fire.auth().signInWithEmailAndPassword(email,password);
+    setLoading(false)
     // Cookies.set('user', `${getUid()}`)
   }
 
   const signup = async (email, password, name) =>{
     try{
+      setLoading(true)
       await fire.auth().createUserWithEmailAndPassword(email, password);
+      setLoading(false)
       return fire.auth().currentUser.updateProfile({
         displayName: name
       })
@@ -47,7 +53,7 @@ const AuthContextProvider = (props) => {
   }
 
   return (
-    <AuthContext.Provider value={{currentUser, redirect, signin, signup, getUsername, getUid}}>
+    <AuthContext.Provider value={{isLoading,currentUser, redirect, signin, signup, getUsername, getUid}}>
       {props.children}
     </AuthContext.Provider>
   );

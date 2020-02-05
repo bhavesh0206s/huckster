@@ -9,7 +9,6 @@ const YourProductList = () => {
 
   useEffect(()=>{
     updateYourProductList()
-    console.log('done')
   },[]);
     
   return (
@@ -17,6 +16,7 @@ const YourProductList = () => {
       <div className="grid">
         {yourProductInfo.map(info => 
           <YourProduct 
+            yourProductInfo={yourProductInfo}
             id={info.id}
             key={info.id}
             deleteItem={deleteItem}

@@ -1,0 +1,21 @@
+.form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-field{
+  margin-top: 100px;
+  min-width: 340px;
+  border-radius: 4px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+
+#search-field:hover{
+  background-color: #5d5b6a;
+}

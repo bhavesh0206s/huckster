@@ -19,7 +19,6 @@ const Home = () => {
         <Link to='./products'>
           <button className="button animated rubberBand" id='shop-now'>SHOP NOW</button>
         </Link>
-      <Loading/>
       </div>
       <Footer/>
     </div>
