@@ -18,7 +18,7 @@ const YourProduct = (props) => {
           <YourProductDetails price={props.pricePerItem} imageUrl={props.imageUrl} productName={props.productName} productDetails={props.productDetails}  toggleDetail={toggleDetail}/>
         ) : null}
       </div>
-      <div className="card">
+      <div className="card" style={{marginTop:70}}>
         <div className="card-content">
           <p className="title">
             <img src={props.imageUrl} alt={props.productName} width="300" height="200"/>

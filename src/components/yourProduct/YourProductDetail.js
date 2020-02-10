@@ -13,10 +13,10 @@ const YourProductDetails = (props) => {
           </header>
           <section className="modal-card-body">
             <img src={props.imageUrl} alt=""/>
-            <h5>
+            <h5 className="product-details-model">
               {props.productDetails}
             </h5>
-            <h1>
+            <h1 className="model-price">
               <strong>
                 &#8377;
                 {props.price}
@@ -24,7 +24,7 @@ const YourProductDetails = (props) => {
             </h1>
           </section>
           <footer className="modal-card-foot">
-            <button onClick={props.toggleDetail} className="button is-success">Close</button>
+            <button onClick={props.toggleDetail} className="button is-success close-btn">Close</button>
           </footer>
         </div>
       </div>

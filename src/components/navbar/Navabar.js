@@ -54,11 +54,11 @@ const Navbar = (props) => {
               Sell Here
             </Link>
           </div>
-          <div className="navbar-item">
+         <div className="navbar-item">
             <Link to="/products" style={{color: "black", cursor:"pointer"}}>
               Products
             </Link>
-          </div>
+           </div>
           <div className="navbar-item">
             <Link to={`/your-product/${getUid()}`} style={{color: "black", cursor:"pointer"}}>
               Your Products
@@ -70,16 +70,11 @@ const Navbar = (props) => {
             </div>
 
             <div className="navbar-dropdown">
-              <div className="navbar-item" style={{color: "black", cursor:"pointer"}}>
-                <Link to="/about">
-                  About
-                </Link>
-              </div>
               <hr className="navbar-divider"/>
               <div className="navbar-item" style={{color: "black", cursor:"pointer"}}>
-                <Link to="/contact">
+                <a href="https://www.linkedin.com/in/bhavesh-suthar-b3538b16a/">
                   Contact Us
-                </Link>
+                </a>
               </div>
             </div>
           </div>

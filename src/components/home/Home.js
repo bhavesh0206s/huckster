@@ -13,9 +13,9 @@ const Home = () => {
   return (
     <div className="home">
       <div className="layer">
-        {currentUser ? <h1 id="username" className="animated fadeInLeft">Welcome {getUsername()}</h1> : null}
+        {currentUser ? <h1 style={{color:"antiquewhite"}} id="username" className="animated fadeInLeft">Welcome {getUsername()}</h1> : null}
         <h1 id="title" className="animated fadeInRight">Artisanship</h1>
-        <p id="buy-online" className="animated fadeInLeft">Buy & Sell Handicraft Online</p>
+        <p id="buy-online" className="animated fadeInLeft">Buy & Sell Anything</p>
         <Link to='./products'>
           <button className="button animated rubberBand" id='shop-now'>SHOP NOW</button>
         </Link>

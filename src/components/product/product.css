@@ -10,6 +10,7 @@
   display: grid;
   grid-gap: 30px;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: minmax(min-content, max-content);
 }
 .card{
   background-color: #cfb495;
@@ -41,6 +42,7 @@
 
 .buy-now,.add-to-cart{
   margin: 0;
+  max-width: 100px;
 }
 
 .product-name{

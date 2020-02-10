@@ -5,6 +5,35 @@
   font-size: 1.2rem;
 }
 
+.modal-card-head{
+  text-align: center;
+  padding: .6em;
+  font-weight: bold;
+}
+
+.modal-card-title{
+  font-size: 1.5em;
+}
+
+.product-details-model{
+  margin-top: 0.8em;
+  line-height: 1.2em;
+  font-size: 1.1em;
+}
+
+.model-price{
+  font-size: 1.5em;
+  margin-top: 0.8em;
+  margin-bottom: .2em;
+}
+
+.close-btn{
+  margin: 0;
+}
+
+.modal-card-foot{
+  padding: .6em;
+}
 
 @media only screen and (max-width: 600px) {
   .modal-card {

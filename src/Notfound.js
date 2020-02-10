@@ -3,9 +3,8 @@ import NotFoundImg from './pale-fatal-error.png'
 
 const NotFound = () => {
   return (
-    <div style={{paddingTop: "500"}}>
-      <h1>Not Found</h1>
-      <img src={NotFoundImg} alt="not found"/>
+    <div style={{paddingTop: 100, display:"flex", justifyContent:"center", height:'100vh', alignItems:"center"}}>
+      <img src={NotFoundImg} alt="not found" width='800' height="200"/>
     </div>
   );
 }

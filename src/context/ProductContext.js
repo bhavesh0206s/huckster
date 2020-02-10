@@ -20,7 +20,7 @@ const ProductContextProvider = (props) => {
   }
 
   const searchInput = (e)=>{
-    let inputValue =  e.target.value;
+    let inputValue =  e.target.value.toLowerCase();
     setInput(inputValue)
     let searchedProduct = productInfo.filter((info) => {
       let trimProductName = info.product_name.toLowerCase().split('').join('');
