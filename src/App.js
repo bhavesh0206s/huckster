@@ -25,27 +25,27 @@ const App = (props)=>{
   return(
     <Router>
         <Navbar/>
-        {currentUser ? (
-          <div id="home-shop-cart">
-              <ShoppingCart/>
-          </div>
-        ): null}
-        <Switch>
-            <Route path={!(currentUser) ? '/' : `/${getUid()}`} exact component = {Home}/>
-            <Route path="/signin" component={Signin}/>
-            <Route path="/signup" component={Signup}/>
-          <SellHereContextProvider>
-            <ProductContextProvider>
-              <Route path="/products" component={ProductList}/>
-            </ProductContextProvider>
-            <Route path="/about" component={About}/>
-            <PrivateRoute path={`/sell/${getUid()}`} component={SellHere}/>
-            <YourProductContextProvider>
-              <PrivateRoute path={`/your-product/${getUid()}`} component={YourProductList}/>
-            </YourProductContextProvider>
-          </SellHereContextProvider>
-            <Route component={Notfound} />
-        </Switch>
+        <SellHereContextProvider>
+          <ProductContextProvider>
+          {currentUser ? (
+            <div id="home-shop-cart">
+                <ShoppingCart/>
+            </div>
+          ): null}
+          <Switch>
+              <Route path={!(currentUser) ? '/' : `/${getUid()}`} exact component = {Home}/>
+              <Route path="/signin" component={Signin}/>
+              <Route path="/signup" component={Signup}/>
+                <Route path="/products" component={ProductList}/>
+              <Route path="/about" component={About}/>
+              <PrivateRoute path={`/sell/${getUid()}`} component={SellHere}/>
+              <YourProductContextProvider>
+                <PrivateRoute path={`/your-product/${getUid()}`} component={YourProductList}/>
+              </YourProductContextProvider>
+              <Route component={Notfound} />
+          </Switch>
+          </ProductContextProvider>
+        </SellHereContextProvider>
     </Router>
   )
 }

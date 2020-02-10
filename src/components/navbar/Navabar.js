@@ -36,7 +36,7 @@ const Navbar = (props) => {
         <div className="navbar-item">
           <Link to={!currentUser ? '/' : `/${getUid()}`} >  
             <img id="icon" src="https://img.icons8.com/color/50/000000/potters-wheel.png" alt="artisanship"/>
-            <strong id="company-name" style={{color: "antiquewhite"}}>Artisanship</strong>
+            <strong id="company-name" style={{color: "antiquewhite"}}>huckster</strong>
             
           </Link>
         </div>

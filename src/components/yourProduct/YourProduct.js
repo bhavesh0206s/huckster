@@ -20,13 +20,13 @@ const YourProduct = (props) => {
       </div>
       <div className="card" style={{marginTop:70}}>
         <div className="card-content">
-          <p className="title">
-            <img src={props.imageUrl} alt={props.productName} width="300" height="200"/>
-          </p>
+        <figure class="image is-4by3">
+            <img id="product-img" src={props.imageUrl} alt={props.productName} />
+        </figure>
         </div>
         <div style={{display:"flex" ,justifyContent:"space-around"}}> 
             <div className="subtitle product-name">
-              {props.productName}
+            {props.productName.slice(0,25)}...
             </div>
             <div className="subtitle">
               <strong>

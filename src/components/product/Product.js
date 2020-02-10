@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './product.css'
 import YourProductDetails from '../yourProduct/YourProductDetail';
+import { AuthContext } from '../../context/AuthContext';
+import { ProductContext } from '../../context/ProductContext';
 
 const ProductList = (props) => {
+  const {currentUser} = useContext(AuthContext);
+  const {productNameForCart, setProductNameForCart,priceOfItem, setPriceOfItem} = useContext(ProductContext);
   const [isDetail , setIsDetail] = useState(false)
 
   const toggleDetail = () => {
     setIsDetail(!isDetail)
   } 
+
+
+  const handleAddtoCart = () => {
+    setProductNameForCart([...productNameForCart, props.productName]);
+    setPriceOfItem([...priceOfItem, props.pricePerItem])
+  }
+
+  const handleBuyNow = () => {
+    alert('Thank You')
+  }
 
   return (
     <div>
@@ -24,7 +38,7 @@ const ProductList = (props) => {
         </div>
         <div style={{display:"flex" ,justifyContent:"space-around"}}> 
           <div className="subtitle product-name" onClick={toggleDetail}>
-            {props.productName}
+            {props.productName.slice(0,25)}...
           </div>
           <div className="subtitle">
             <strong>
@@ -35,12 +49,12 @@ const ProductList = (props) => {
         </div>
         <footer className="card-footer">
           <p className="card-footer-item">
-            <button onClick={props.handleBuyNow} className="button is-primary is-inverted is-outlined buy-now" style={{backgroundColor:"#758184", color:'antiquewhite'}}>
+            <button onClick={currentUser ? handleBuyNow : props.gotoSignIn} className="button is-primary is-inverted is-outlined buy-now" style={{backgroundColor:"#758184", color:'antiquewhite'}}>
               Buy Now
             </button>
           </p>
           <p className="card-footer-item">
-            <button onClick={props.handleAddtoCart} className="button is-primary add-to-cart" style={{backgroundColor:"#5d5b6a", color:'antiquewhite'}}>
+            <button onClick={currentUser ? handleAddtoCart: props.gotoSignIn} className="button is-primary add-to-cart" style={{backgroundColor:"#5d5b6a", color:'antiquewhite'}}>
               Add to Cart
             </button>
           </p>

@@ -2,7 +2,6 @@
   background-color: #758184;
   height: 100%;
   width: 100%;
-  
 }
 
 .grid{
@@ -45,10 +44,14 @@
   max-width: 100px;
 }
 
+.buy-now:hover{
+  background-color: #111213;
+}
+
 .product-name{
   border: 2px solid black;
   border-style: none;
-  width: 200px;
+  width: 250px;
   word-wrap: break-word
 }
 
