@@ -27,17 +27,14 @@ const Signup = (props) => {
         ): (
         <div className="layer-signin">
           <div className="box animated bounceInDown" id="signup-box">  
-          <h1><strong>SignUp</strong></h1>
-          <div className="gmail-signup">
-            <button className="button is-danger">Signup with Gmail</button>
-          </div>
+          <h1 style={{marginBottom:30, fontSize: '1.5em'}}><strong>SignUp</strong></h1>
           <form onSubmit={handleSubmit}>
             <label>Full Name</label>
-              <input className="input is-rounded" type="text" placeholder="Enter your fullname" onChange={e => setFullname(e.target.value)} />
+              <input className="input is-rounded" required type="text" placeholder="Enter your fullname" onChange={e => setFullname(e.target.value)} />
             <label>Email</label>
-              <input className="input is-rounded" type="email" placeholder="Enter your email" onChange={e => setEmail(e.target.value)} />
+              <input className="input is-rounded" required type="email" placeholder="Enter your email" onChange={e => setEmail(e.target.value)} />
             <label>Password</label>
-              <input id="submit" className="input is-rounded" type="password" placeholder="Enter password" onChange={e => setPassword(e.target.value)} />
+              <input id="submit" className="input is-rounded" required type="password" placeholder="Enter password" onChange={e => setPassword(e.target.value)} />
             <button className="button is-primary is-rounded">Submit</button>
             <Link to="/signin">
               <button id="signin" className="button is-rounded">Login</button>  
