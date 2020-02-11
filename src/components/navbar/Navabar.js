@@ -36,7 +36,7 @@ const Navbar = (props) => {
         <div className="navbar-item">
           <Link to={!currentUser ? '/' : `/${getUid()}`} >  
             <img id="icon" src="https://img.icons8.com/color/50/000000/potters-wheel.png" alt="artisanship"/>
-            <strong id="company-name" style={{color: "antiquewhite"}}>huckster</strong>
+            <strong id="company-name" style={{color: "antiquewhite"}}>Huckster</strong>
             
           </Link>
         </div>
@@ -70,9 +70,8 @@ const Navbar = (props) => {
             </div>
 
             <div className="navbar-dropdown">
-              <hr className="navbar-divider"/>
               <div className="navbar-item" style={{color: "black", cursor:"pointer"}}>
-                <a href="https://www.linkedin.com/in/bhavesh-suthar-b3538b16a/">
+                <a href="https://www.linkedin.com/in/bhavesh-suthar-b3538b16a/" target="_blank"> 
                   Contact Us
                 </a>
               </div>
