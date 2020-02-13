@@ -7,7 +7,6 @@
   margin-top: 5px;
   position: absolute;
   right: 1px;
-  /* margin: 8px 0px 0px 700px; */
 }
 
 
@@ -29,13 +28,26 @@
   font-size: 1.3em;
 }
 
+#checkout{
+  float: right;
+  background: rgb(245, 79, 79);
+  border-radius: 5px;
+  font-size: 1.2em;
+  padding: 0.3em;
+  color: rgb(255, 255, 255);
+}
+
+#checkout:hover{
+  background: rgb(245, 79, 79,.8);
+}
+
 #item-head{
   padding-left: 0em;
 }
 
 #product-added{
   width: 200px;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   border-bottom: 2px solid black;
   border-width: .2em;
 }
@@ -48,7 +60,7 @@
 #product-price-cart{
   position: relative;
   font-weight: 300;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   border-bottom: 2px solid black;
   border-width: .2em;
 }

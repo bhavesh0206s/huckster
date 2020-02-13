@@ -1,0 +1,11 @@
+.checkout-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3em;
+}
+
+.checkout-box-main{
+  padding: 40px;
+  width: 80em;
+}

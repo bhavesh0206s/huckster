@@ -16,8 +16,6 @@ const ShoppingCart = (props) => {
       console.log(priceOfItem)
   }
 
-  
-
   useEffect(()=>{
     let sum  = 0;
     let count = 0;
@@ -70,6 +68,9 @@ const ShoppingCart = (props) => {
                   </strong>
                 </li>
               </ul>
+            </div>
+            <div>
+              <button id="checkout">Checkout</button>
             </div>
           </div>
       ): null}

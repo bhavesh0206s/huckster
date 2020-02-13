@@ -3,10 +3,11 @@ import './product.css'
 import YourProductDetails from '../yourProduct/YourProductDetail';
 import { AuthContext } from '../../context/AuthContext';
 import { ProductContext } from '../../context/ProductContext';
+import { Link } from 'react-router-dom';
 
 const ProductList = (props) => {
   const {currentUser} = useContext(AuthContext);
-  const {productNameForCart, setProductNameForCart,priceOfItem, setPriceOfItem} = useContext(ProductContext);
+  const {productNameForCart, setProductNameForCart,priceOfItem, setPriceOfItem,buyNowClicked} = useContext(ProductContext);
   const [isDetail , setIsDetail] = useState(false)
 
   const toggleDetail = () => {
@@ -19,10 +20,6 @@ const ProductList = (props) => {
     setPriceOfItem([...priceOfItem, props.pricePerItem])
   }
 
-  const handleBuyNow = () => {
-    alert('Thank You')
-  }
-
   return (
     <div>
     <div style={{margin: "100"}}>
@@ -32,7 +29,7 @@ const ProductList = (props) => {
       </div>
     <div className="card">
         <div className="card-content" >
-        <figure class="image is-4by3">
+        <figure className="image is-4by3">
             <img id="product-img" src={props.imageUrl} alt={props.productName} />
         </figure>
         </div>
@@ -49,9 +46,11 @@ const ProductList = (props) => {
         </div>
         <footer className="card-footer">
           <p className="card-footer-item">
-            <button onClick={currentUser ? handleBuyNow : props.gotoSignIn} className="button is-primary is-inverted is-outlined buy-now" style={{backgroundColor:"#758184", color:'antiquewhite'}}>
-              Buy Now
-            </button>
+            <Link to="/checkout">
+              <button onClick={()=>buyNowClicked(props.productName, props.pricePerItem, props.imageUrl, props.productDetails)}  className="button is-primary is-inverted is-outlined buy-now" style={{backgroundColor:"#758184", color:'antiquewhite'}}>
+                Buy Now
+              </button>
+            </Link>
           </p>
           <p className="card-footer-item">
             <button onClick={currentUser ? handleAddtoCart: props.gotoSignIn} className="button is-primary add-to-cart" style={{backgroundColor:"#5d5b6a", color:'antiquewhite'}}>

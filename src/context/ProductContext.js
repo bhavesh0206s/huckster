@@ -5,10 +5,11 @@ export const ProductContext = createContext();
 
 const ProductContextProvider = (props) => {
   const [productInfo, setProductInfo] = useState([]);
-  const [input ,setInput] = useState('');
+  const [input, setInput] = useState('');
   const [searchResult, setSearchResult] = useState([]);
   const [productNameForCart, setProductNameForCart] = useState([]);
   const [priceOfItem, setPriceOfItem] = useState([]);
+  const [buyNowData, setBuyNowData] = useState([])
 
   const updateProductList = () => {
     let productRef = fireDb.collection('public-product-info');
@@ -43,12 +44,21 @@ const ProductContextProvider = (props) => {
     setProductNameForCart(productNameForCartNew)
   }
 
+  const buyNowClicked = (productName,pricePerItem,imageUrl,productDetails) => {
+    setBuyNowData([{
+      productName: productName,
+      pricePerItem: pricePerItem,
+      imageUrl: imageUrl,
+      productDetails: productDetails
+    }])
+  }
+
   useEffect(()=>{
     updateProductList();
   },[]);
 
   return (
-    <ProductContext.Provider value={{input, searchInput, deleteItem,productInfo, searchResult,productNameForCart, setProductNameForCart,priceOfItem, setPriceOfItem}}>
+    <ProductContext.Provider value={{buyNowClicked,buyNowData,input, searchInput, deleteItem,productInfo, searchResult,productNameForCart, setProductNameForCart,priceOfItem, setPriceOfItem}}>
       {props.children}
     </ProductContext.Provider>
   );

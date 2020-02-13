@@ -17,6 +17,7 @@ import SellHereContextProvider from './context/SellHereContext';
 import YourProductContextProvider from './context/YourProductContext';
 import ProductContextProvider from './context/ProductContext';
 import './App.css'
+import Checkout from './components/checkout/Checkout';
 
 const App = (props)=>{
   const {currentUser, getUid} = useContext(AuthContext);
@@ -27,23 +28,24 @@ const App = (props)=>{
         <Navbar/>
         <SellHereContextProvider>
           <ProductContextProvider>
-          {currentUser ? (
+          <YourProductContextProvider>
+           {currentUser ? (
             <div id="home-shop-cart">
                 <ShoppingCart/>
             </div>
-          ): null}
-          <Switch>
-              <Route path={!(currentUser) ? '/' : `/${getUid()}`} exact component = {Home}/>
-              <Route path="/signin" component={Signin}/>
-              <Route path="/signup" component={Signup}/>
-                <Route path="/products" component={ProductList}/>
-              <Route path="/about" component={About}/>
-              <PrivateRoute path={`/sell/${getUid()}`} component={SellHere}/>
-              <YourProductContextProvider>
-                <PrivateRoute path={`/your-product/${getUid()}`} component={YourProductList}/>
-              </YourProductContextProvider>
-              <Route component={Notfound} />
-          </Switch>
+            ): null}
+              <Switch>
+                  <Route path={!(currentUser) ? '/' : `/${getUid()}`} exact component = {Home}/>
+                  <Route path="/signin" component={Signin}/>
+                  <Route path="/signup" component={Signup}/>
+                  <Route path="/products" component={ProductList}/>
+                  <Route path="/about" component={About}/>
+                  <PrivateRoute path={`/sell/${getUid()}`} component={SellHere}/>
+                  <PrivateRoute path={`/your-product/${getUid()}`} component={YourProductList}/>
+                  <Route path={'/checkout'} component={Checkout}/>
+                  <Route component={Notfound} />
+              </Switch>
+            </YourProductContextProvider>
           </ProductContextProvider>
         </SellHereContextProvider>
     </Router>
