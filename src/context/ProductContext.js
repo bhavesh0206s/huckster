@@ -9,8 +9,10 @@ const ProductContextProvider = (props) => {
   const [searchResult, setSearchResult] = useState([]);
   const [productNameForCart, setProductNameForCart] = useState([]);
   const [priceOfItem, setPriceOfItem] = useState([]);
-  const [buyNowData, setBuyNowData] = useState([])
-
+  const [imageUrlCheckout, setImageUrlCheckout] = useState([])
+  const [buyNowData, setBuyNowData] = useState([]);
+  const [isOrderClicked, setOrderClicked] = useState(false);
+ 
   const updateProductList = () => {
     let productRef = fireDb.collection('public-product-info');
     productRef.onSnapshot(snap => {
@@ -58,7 +60,24 @@ const ProductContextProvider = (props) => {
   },[]);
 
   return (
-    <ProductContext.Provider value={{buyNowClicked,buyNowData,input, searchInput, deleteItem,productInfo, searchResult,productNameForCart, setProductNameForCart,priceOfItem, setPriceOfItem}}>
+    <ProductContext.Provider 
+      value={{
+        isOrderClicked, 
+        setOrderClicked, 
+        buyNowClicked, 
+        buyNowData, 
+        input, 
+        searchInput, 
+        deleteItem,
+        productInfo, 
+        searchResult,
+        productNameForCart, 
+        setProductNameForCart,
+        priceOfItem, 
+        setPriceOfItem,
+        imageUrlCheckout,
+        setImageUrlCheckout
+      }}>
       {props.children}
     </ProductContext.Provider>
   );

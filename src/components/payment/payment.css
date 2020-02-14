@@ -1,0 +1,29 @@
+
+.option {
+  width: 470px;
+  height: 50px;                   
+  border: 2px solid black;
+  font-size: 1.5em;
+  background: white;
+  padding: 5px;
+  font-weight: 600;
+  border-radius: px;
+  border-style: none;
+  border-left: 5px solid rgb(243, 53, 53);
+}
+.option:hover{
+  cursor: pointer;
+  background: #a5b3b8;
+  font-weight: 700;
+}
+
+.clicked{
+  cursor: pointer;
+  background: rgb(243, 53, 53);
+}
+
+@media only screen and (max-width: 600px) {
+  .option{
+    width: 350px;
+  }
+}

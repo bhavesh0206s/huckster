@@ -2,10 +2,41 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 3em;
+  flex-direction: column;
+  margin-top: 2em;
 }
 
 .checkout-box-main{
-  padding: 40px;
-  width: 80em;
+  padding: 20px;
+  width: 600px;
+  min-height: 100px;
+}
+
+#price-checkout{
+  text-align: center;
+  font-size: 2em;
+  font-weight: 800;
+}
+
+#name-checkout{
+  margin-bottom: 10px;
+  letter-spacing: 1.5px;
+  font-size: 1.3em;
+}
+
+#payment-text{
+  text-align: center;
+  font-size: 2em;
+  font-weight: 600;
+  padding-bottom: 1em;
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 600px) {
+  .checkout-box-main{
+    width: 350px;
+  }
+  #payment-text{
+    font-size: 1.5em;
+  }
 }

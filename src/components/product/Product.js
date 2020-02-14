@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom';
 
 const ProductList = (props) => {
   const {currentUser} = useContext(AuthContext);
-  const {productNameForCart, setProductNameForCart,priceOfItem, setPriceOfItem,buyNowClicked} = useContext(ProductContext);
+  const {productNameForCart, setProductNameForCart,priceOfItem, setPriceOfItem,buyNowClicked,imageUrlCheckout,
+    setImageUrlCheckout} = useContext(ProductContext);
   const [isDetail , setIsDetail] = useState(false)
 
   const toggleDetail = () => {
@@ -18,6 +19,7 @@ const ProductList = (props) => {
   const handleAddtoCart = () => {
     setProductNameForCart([...productNameForCart, props.productName]);
     setPriceOfItem([...priceOfItem, props.pricePerItem])
+    setImageUrlCheckout([...imageUrlCheckout, props.imageUrl])
   }
 
   return (

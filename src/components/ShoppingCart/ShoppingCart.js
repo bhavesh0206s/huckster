@@ -3,10 +3,11 @@ import './shoppingcart.css'
 import { useContext } from 'react';
 import { ProductContext } from '../../context/ProductContext';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const ShoppingCart = (props) => {
   const [isCartClicked, setCartClicked] = useState(false);
-  const {productNameForCart, priceOfItem,deleteItem} = useContext(ProductContext);
+  const {productNameForCart, priceOfItem,deleteItem, setOrderClicked} = useContext(ProductContext);
   const [total, setTotal] = useState(0);
   const [counter, setCounter] = useState(0);
 
@@ -70,7 +71,9 @@ const ShoppingCart = (props) => {
               </ul>
             </div>
             <div>
-              <button id="checkout">Checkout</button>
+            <Link to="/checkout">
+              <button id="checkout" onClick={()=>setOrderClicked(true)}>Order</button>
+            </Link>
             </div>
           </div>
       ): null}
