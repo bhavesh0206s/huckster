@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { fireDb } from '../firebase';
+import fire, { fireDb } from '../firebase';
 
 export const ProductContext = createContext();
 
@@ -47,12 +47,25 @@ const ProductContextProvider = (props) => {
   }
 
   const buyNowClicked = (productName,pricePerItem,imageUrl,productDetails) => {
-    setBuyNowData([{
+    let userid =  fire.auth().currentUser.uid;
+    let fieldData = {
       productName: productName,
       pricePerItem: pricePerItem,
       imageUrl: imageUrl,
       productDetails: productDetails
-    }])
+    }
+    
+    let buyProductRef = fireDb.collection('user').doc(`${userid}`);
+    buyProductRef.collection('buy-now').doc('product-data').set(fieldData)
+    .catch((e)=> console.log(e))    
+  }
+
+  const getBuyNowData = async (userid) => {
+    let productRef = fireDb.collection('user').doc(`${userid}`).collection('buy-now').doc('product-data');
+    productRef.get().then(snap => {
+      const productData = snap.data()
+      setBuyNowData([productData])
+      },error => console.log("Error getting document:", error));
   }
 
   useEffect(()=>{
@@ -62,6 +75,7 @@ const ProductContextProvider = (props) => {
   return (
     <ProductContext.Provider 
       value={{
+        getBuyNowData,
         isOrderClicked, 
         setOrderClicked, 
         buyNowClicked, 

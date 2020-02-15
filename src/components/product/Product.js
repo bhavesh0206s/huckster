@@ -6,7 +6,7 @@ import { ProductContext } from '../../context/ProductContext';
 import { Link } from 'react-router-dom';
 
 const ProductList = (props) => {
-  const {currentUser} = useContext(AuthContext);
+  const {currentUser,getUid} = useContext(AuthContext);
   const {productNameForCart, setProductNameForCart,priceOfItem, setPriceOfItem,buyNowClicked,imageUrlCheckout,
     setImageUrlCheckout} = useContext(ProductContext);
   const [isDetail , setIsDetail] = useState(false)
@@ -48,7 +48,7 @@ const ProductList = (props) => {
         </div>
         <footer className="card-footer">
           <p className="card-footer-item">
-            <Link to="/checkout">
+            <Link to={`/checkout/${getUid()}`}>
               <button onClick={()=>buyNowClicked(props.productName, props.pricePerItem, props.imageUrl, props.productDetails)}  className="button is-primary is-inverted is-outlined buy-now" style={{backgroundColor:"#758184", color:'antiquewhite'}}>
                 Buy Now
               </button>

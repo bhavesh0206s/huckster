@@ -42,7 +42,7 @@ const App = (props)=>{
                   <Route path="/about" component={About}/>
                   <PrivateRoute path={`/sell/${getUid()}`} component={SellHere}/>
                   <PrivateRoute path={`/your-product/${getUid()}`} component={YourProductList}/>
-                  <Route path={'/checkout'} component={Checkout}/>
+                  <PrivateRoute path={`/checkout/${getUid()}`} component={Checkout}/>
                   <Route component={Notfound} />
               </Switch>
             </YourProductContextProvider>

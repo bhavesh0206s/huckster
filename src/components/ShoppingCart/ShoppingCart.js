@@ -4,17 +4,17 @@ import { useContext } from 'react';
 import { ProductContext } from '../../context/ProductContext';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 const ShoppingCart = (props) => {
+  const {getUid} = useContext(AuthContext)
   const [isCartClicked, setCartClicked] = useState(false);
   const {productNameForCart, priceOfItem,deleteItem, setOrderClicked} = useContext(ProductContext);
   const [total, setTotal] = useState(0);
-  const [counter, setCounter] = useState(0);
+  const [productCounter, setProductCounter] = useState(0);
 
   const toggleCart = ()=>{
       setCartClicked(!isCartClicked)
-      console.log(productNameForCart);
-      console.log(priceOfItem)
   }
 
   useEffect(()=>{
@@ -25,15 +25,15 @@ const ShoppingCart = (props) => {
       count++
     })
     setTotal(sum)
-    setCounter(count)
+    setProductCounter(count)
   },[priceOfItem])
 
   return (
     <div style={{cursor:"pointer"}} id="cart-main">
       <div className="button shop-cart" onClick={toggleCart}>
-        {counter ? (
+        {productCounter ? (
           <div style={{fontSize: 40}}>
-            {counter}
+            {productCounter}
           </div>
           ) : 
           (
@@ -71,9 +71,11 @@ const ShoppingCart = (props) => {
               </ul>
             </div>
             <div>
-            <Link to="/checkout">
-              <button id="checkout" onClick={()=>setOrderClicked(true)}>Order</button>
-            </Link>
+            {productCounter ? (
+              <Link to={`/checkout/${getUid()}`}>
+                <button id="checkout" onClick={()=>setOrderClicked(true)}>Order</button>
+              </Link>
+            ): null}
             </div>
           </div>
       ): null}

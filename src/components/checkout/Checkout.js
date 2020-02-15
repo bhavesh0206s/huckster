@@ -1,17 +1,15 @@
-import React from 'react';
-import CheckoutBox from './CheckoutBox';
-import './checkout.css';
-import { useContext } from 'react';
+import React , {useContext,useState,useEffect} from 'react';
 import { ProductContext } from '../../context/ProductContext';
-import styled from 'styled-components';
+import { AuthContext } from '../../context/AuthContext';
+import CheckoutBox from './CheckoutBox';
 import Payment from '../payment/Payment';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import './checkout.css';
 
 
 
 const Checkout = () => {
-  const {productNameForCart, priceOfItem, buyNowData, isOrderClicked, imageUrlCheckout} = useContext(ProductContext);
+  const {getUid} = useContext(AuthContext)
+  const {productNameForCart, priceOfItem, buyNowData, isOrderClicked, imageUrlCheckout,getBuyNowData} = useContext(ProductContext);
   const [cartItems, setCartItems] = useState([])
 
   const addtoSetCartItems = () => {
@@ -22,6 +20,7 @@ const Checkout = () => {
   }
 
   useEffect(()=>{
+    getBuyNowData(getUid())
     addtoSetCartItems()
   },[])
 
