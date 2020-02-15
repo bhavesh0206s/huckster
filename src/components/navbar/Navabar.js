@@ -48,18 +48,18 @@ const Navbar = (props) => {
       </div>
 
       <div onClick={navbarHide} id="navbarBasicExample" className={`navbar-menu animated fadeIn ${activeClass}`}>
-        <div className="navbar-start">
+        <div className="navbar-start hover-effect">
           <div className="navbar-item">
             <Link to={`/sell/${getUid()}`} style={{color: "black", cursor:"pointer"}}>
               Sell Here
             </Link>
           </div>
-         <div className="navbar-item">
+         <div className="navbar-item hover-effect">
             <Link to="/products" style={{color: "black", cursor:"pointer"}}>
               Products
             </Link>
            </div>
-          <div className="navbar-item">
+          <div className="navbar-item hover-effect">
             <Link to={`/your-product/${getUid()}`} style={{color: "black", cursor:"pointer"}}>
               Your Products
             </Link>
@@ -68,9 +68,8 @@ const Navbar = (props) => {
             <div className="navbar-link" style={{color: "black", cursor:"pointer"}}>
               More
             </div>
-
             <div className="navbar-dropdown">
-              <div className="navbar-item" style={{color: "black", cursor:"pointer"}}>
+              <div className="navbar-item1"  style={{color: "black", cursor:"pointer", padding:10}}>
                 <a href="https://www.linkedin.com/in/bhavesh-suthar-b3538b16a/" target="_blank"> 
                   Contact Us
                 </a>
@@ -92,7 +91,7 @@ const Navbar = (props) => {
               <div className="navbar-item">
                 <div className="buttons">
                   <Link to="signup">
-                    <div className="button is-primary" style={{paddingRight:"50"}}>
+                    <div className="button is-primary" style={{marginRight:10}}>
                       <strong>Sign up</strong>
                     </div>
                   </Link>

@@ -8,8 +8,8 @@ import { AuthContext } from '../../context/AuthContext';
 
 const ShoppingCart = (props) => {
   const {getUid} = useContext(AuthContext)
+  const {cartItems, setOrderClicked,deleteCartItem} = useContext(ProductContext);
   const [isCartClicked, setCartClicked] = useState(false);
-  const {productNameForCart, priceOfItem,deleteItem, setOrderClicked} = useContext(ProductContext);
   const [total, setTotal] = useState(0);
   const [productCounter, setProductCounter] = useState(0);
 
@@ -20,13 +20,14 @@ const ShoppingCart = (props) => {
   useEffect(()=>{
     let sum  = 0;
     let count = 0;
-    priceOfItem.forEach(element => {
-      sum += Number(element)
+    cartItems.forEach(element => {
+      sum += Number(element.pricePerItem)
       count++
     })
     setTotal(sum)
     setProductCounter(count)
-  },[priceOfItem])
+    
+  },[cartItems])
 
   return (
     <div style={{cursor:"pointer"}} id="cart-main">
@@ -48,18 +49,18 @@ const ShoppingCart = (props) => {
               </ul>
             <div className="products">
               <ul>
-                {productNameForCart.map((productAdded, index) => {
+                {cartItems.map((productAdded) => {
                   return(
-                    <li id="product-added" value={index} onClick={deleteItem}>{productAdded.slice(0,20)}...</li>
+                    <li id="product-added" data-id={productAdded.id} onClick={deleteCartItem}>{productAdded.productName.slice(0,22)}...</li>
                   )
                 })}
                 Total: 
               </ul>
               <ul>
-                {priceOfItem.map((price,index)=>{
+                {cartItems.map((price)=>{
                   return(
                     <Fragment>
-                      <li id="product-price-cart" value={index}> &#8377;{price}</li>
+                      <li id="product-price-cart" data-id={price.id}> &#8377;{price.pricePerItem}</li>
                     </Fragment>
                   )
                 })}

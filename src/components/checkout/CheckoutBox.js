@@ -23,6 +23,7 @@ const CheckoutBox = (props) => {
             </div>
           </div>
       </article>
+      <button data-id={props.id} onClick={props.delete}>Delete</button>
     </div>
   );
 }

@@ -7,6 +7,12 @@
   background: #5d5b6a;
 }
 
+.navbar-item:hover{
+  cursor: pointer;
+  border-radius: 5px;
+  background: #758184;
+}
+
 #icon{
   width: 30px;
 }

@@ -9,39 +9,39 @@ import './checkout.css';
 
 const Checkout = () => {
   const {getUid} = useContext(AuthContext)
-  const {productNameForCart, priceOfItem, buyNowData, isOrderClicked, imageUrlCheckout,getBuyNowData} = useContext(ProductContext);
-  const [cartItems, setCartItems] = useState([])
-
-  const addtoSetCartItems = () => {
-    let product = productNameForCart.map((item,i)=>{
-      return {name: item, price: priceOfItem[i], imageUrl: imageUrlCheckout[i]}
-    })
-    setCartItems(product)
-  }
+  const {getCartData, buyNowData, isOrderClicked,getBuyNowData, cartItems,deleteBuyNowItem,deleteCartItem} = useContext(ProductContext);
 
   useEffect(()=>{
-    getBuyNowData(getUid())
-    addtoSetCartItems()
+    let uid = getUid()
+    getBuyNowData(uid)
+    getCartData(uid)
   },[])
 
   return (
     <div className="checkout-box">
       {isOrderClicked ? (
         cartItems.map(item=>
-          <CheckoutBox
-            productName = {item.name}
-            imageUrl = {item.imageUrl}
-            pricePerItem = {item.price}
-          />
+          item?(
+            <CheckoutBox
+              productName = {item.productName}
+              imageUrl = {item.imageUrl}
+              pricePerItem = {item.pricePerItem}
+              id = {item.id}
+              delete = {deleteCartItem}
+            />
+          ):( <h1>No Item</h1> )
         )
       ): (
         buyNowData.map(item =>
-          <CheckoutBox
-            productName = {item.productName}
-            productDetails = {item.productDetails}
-            imageUrl = {item.imageUrl}
-            pricePerItem = {item.pricePerItem}
-          />
+          item?(
+            <CheckoutBox
+              productName = {item.productName}
+              imageUrl = {item.imageUrl}
+              pricePerItem = {item.pricePerItem}
+              id = {item.id}
+              delete = {deleteBuyNowItem}
+            />
+          ):(<h1>No Item</h1> )
         )
       )}
       <div>

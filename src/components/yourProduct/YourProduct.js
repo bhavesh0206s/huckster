@@ -7,8 +7,9 @@ const YourProduct = (props) => {
   const [isDetail , setIsDetail] = useState(false)
 
   const toggleDetail = () => {
+    let htmlMainElement = document.querySelector('html')
+    htmlMainElement.classList.toggle('is-clipped')
     setIsDetail(!isDetail)
-    console.log(props.yourProductInfo)
   } 
   
   return (

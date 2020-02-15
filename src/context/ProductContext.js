@@ -11,6 +11,7 @@ const ProductContextProvider = (props) => {
   const [priceOfItem, setPriceOfItem] = useState([]);
   const [imageUrlCheckout, setImageUrlCheckout] = useState([])
   const [buyNowData, setBuyNowData] = useState([]);
+  const [cartItems, setCartItems] = useState([])
   const [isOrderClicked, setOrderClicked] = useState(false);
  
   const updateProductList = () => {
@@ -38,34 +39,67 @@ const ProductContextProvider = (props) => {
     setSearchResult(searchedProduct)
   }
 
-  const deleteItem = (e) =>{
-    let target = e.target.value
-    let productNameForCartNew = productNameForCart.filter((item)=> item !== productNameForCart[target])
-    let priceOfItemNew = priceOfItem.filter((item)=> item !== priceOfItem[target])
-    setPriceOfItem(priceOfItemNew)
-    setProductNameForCart(productNameForCartNew)
-  }
-
   const buyNowClicked = (productName,pricePerItem,imageUrl,productDetails) => {
     let userid =  fire.auth().currentUser.uid;
     let fieldData = {
       productName: productName,
       pricePerItem: pricePerItem,
       imageUrl: imageUrl,
-      productDetails: productDetails
     }
-    
     let buyProductRef = fireDb.collection('user').doc(`${userid}`);
     buyProductRef.collection('buy-now').doc('product-data').set(fieldData)
     .catch((e)=> console.log(e))    
   }
 
-  const getBuyNowData = async (userid) => {
+  const getBuyNowData = (userid) => {
     let productRef = fireDb.collection('user').doc(`${userid}`).collection('buy-now').doc('product-data');
     productRef.get().then(snap => {
       const productData = snap.data()
       setBuyNowData([productData])
       },error => console.log("Error getting document:", error));
+  }
+
+  const deleteBuyNowItem = ()=>{
+    let userid =  fire.auth().currentUser.uid;
+    setBuyNowData([])
+    let productRef = fireDb.collection('user').doc(`${userid}`).collection('buy-now').doc('product-data');
+    productRef.delete()
+      .then(()=>{})
+      .catch(e=>console.log(e))
+  }
+
+  const addtoCartClicked = (productName,pricePerItem,imageUrl) => {
+    let userid =  fire.auth().currentUser.uid;
+    let fieldData = {
+      productName: productName,
+      pricePerItem: pricePerItem,
+      imageUrl: imageUrl,
+    }
+    let buyProductRef = fireDb.collection('user').doc(`${userid}`);
+    buyProductRef.collection('cart-items').add(fieldData)
+    .catch((e)=> console.log(e))
+  }
+
+  const getCartData = (userid)=>{
+    let productRef = fireDb.collection('user').doc(`${userid}`).collection('cart-items');
+    productRef.onSnapshot(snap => {
+      const productData = snap.docs.map(doc=>({
+        id: doc.id,
+        ...doc.data()
+      }))
+      setCartItems(productData)
+      },error => console.log("Error getting document:", error));
+  }
+
+  const deleteCartItem = (e)=>{
+    let userid =  fire.auth().currentUser.uid;
+    let docId = e.currentTarget.dataset.id;
+    const filterCartItems  = cartItems.filter(item => item.id !== item.docId)
+    setCartItems(filterCartItems)
+    let productRef = fireDb.collection('user').doc(`${userid}`).collection('cart-items').doc(docId);
+    productRef.delete()
+      .then(()=>{})
+      .catch(e=>console.log(e))
   }
 
   useEffect(()=>{
@@ -75,6 +109,9 @@ const ProductContextProvider = (props) => {
   return (
     <ProductContext.Provider 
       value={{
+        deleteCartItem,
+        deleteBuyNowItem,
+        cartItems,
         getBuyNowData,
         isOrderClicked, 
         setOrderClicked, 
@@ -82,7 +119,6 @@ const ProductContextProvider = (props) => {
         buyNowData, 
         input, 
         searchInput, 
-        deleteItem,
         productInfo, 
         searchResult,
         productNameForCart, 
@@ -90,7 +126,9 @@ const ProductContextProvider = (props) => {
         priceOfItem, 
         setPriceOfItem,
         imageUrlCheckout,
-        setImageUrlCheckout
+        setImageUrlCheckout,
+        addtoCartClicked,
+        getCartData
       }}>
       {props.children}
     </ProductContext.Provider>

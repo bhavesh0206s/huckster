@@ -30,7 +30,7 @@ const YourProductContextProvider = (props) => {
     let productRef = fireDb.collection('user').doc(`${userid}`);
     productRef.collection('product-info').doc(docId).delete().then(()=>{
     }).catch(e=>console.log(e))
-
+    
     let publicProductRef = fireDb.collection('public-product-info')
     publicProductRef.doc(docId).delete().then(()=>{
     }).catch(e=>console.log(e))
