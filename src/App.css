@@ -1,7 +1,7 @@
 #home-shop-cart{
   display: fixed;
   position: absolute;
-  z-index: 10;
+  z-index: 1000000;
   margin-top: 4em;
   right: 25px;
 }

@@ -10,6 +10,7 @@ const Payment = () => {
   return (
     <div id="payment" style={{marginTop: "2em"}}>
       <h1 id="payment-text">Select Payment Option</h1>
+      <div id="underline"></div>
       <div className="option" onClick={addAnimation}>
         COD
       </div>

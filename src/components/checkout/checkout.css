@@ -32,6 +32,19 @@
   text-transform: uppercase;
 }
 
+#total-checkout{
+  text-transform: uppercase;
+  font-size: 2em;
+  margin: 0;
+  font-weight: 700;
+  color:black;
+}
+
+#total-checkout > span {
+  
+  font-weight: 100;
+}
+
 @media only screen and (max-width: 600px) {
   .checkout-box-main{
     width: 350px;

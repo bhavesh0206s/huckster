@@ -52,6 +52,7 @@ const ProductContextProvider = (props) => {
   }
 
   const getBuyNowData = (userid) => {
+    setCartItems([])
     let productRef = fireDb.collection('user').doc(`${userid}`).collection('buy-now').doc('product-data');
     productRef.get().then(snap => {
       const productData = snap.data()
@@ -61,15 +62,16 @@ const ProductContextProvider = (props) => {
 
   const deleteBuyNowItem = ()=>{
     let userid =  fire.auth().currentUser.uid;
-    setBuyNowData([])
     let productRef = fireDb.collection('user').doc(`${userid}`).collection('buy-now').doc('product-data');
     productRef.delete()
-      .then(()=>{})
-      .catch(e=>console.log(e))
+    .catch(e=>console.log(e))
+    console.log('deleted')
+    setBuyNowData([])
   }
 
   const addtoCartClicked = (productName,pricePerItem,imageUrl) => {
     let userid =  fire.auth().currentUser.uid;
+    
     let fieldData = {
       productName: productName,
       pricePerItem: pricePerItem,

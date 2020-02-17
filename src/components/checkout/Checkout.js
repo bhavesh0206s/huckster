@@ -4,22 +4,38 @@ import { AuthContext } from '../../context/AuthContext';
 import CheckoutBox from './CheckoutBox';
 import Payment from '../payment/Payment';
 import './checkout.css';
+import { Redirect } from 'react-router-dom';
 
 
 
 const Checkout = () => {
   const {getUid} = useContext(AuthContext)
   const {getCartData, buyNowData, isOrderClicked,getBuyNowData, cartItems,deleteBuyNowItem,deleteCartItem} = useContext(ProductContext);
+  const [total, setTotal] = useState(0);
+  const [productCounter, setProductCounter] = useState(0);
+  
+  const inCart = () => {
+    let sum  = 0;
+    let count = 0;
+    cartItems.forEach(element => {
+      sum += Number(element.pricePerItem)
+      count++
+    })
+    setTotal(sum)
+    setProductCounter(count)
+  }
+
 
   useEffect(()=>{
     let uid = getUid()
     getBuyNowData(uid)
     getCartData(uid)
+    inCart()
   },[])
 
   return (
     <div className="checkout-box">
-      {isOrderClicked ? (
+      {productCounter>0 || isOrderClicked  ? (
         cartItems.map(item=>
           item?(
             <CheckoutBox
@@ -29,7 +45,7 @@ const Checkout = () => {
               id = {item.id}
               delete = {deleteCartItem}
             />
-          ):( <h1>No Item</h1> )
+          ):null
         )
       ): (
         buyNowData.map(item =>
@@ -41,9 +57,15 @@ const Checkout = () => {
               id = {item.id}
               delete = {deleteBuyNowItem}
             />
-          ):(<h1>No Item</h1> )
+          ):null
         )
       )}
+      <div>
+         {productCounter>0? 
+          (
+           <h1 id="total-checkout">total: <span>&#8377;{total}</span></h1>
+          ) : null} 
+      </div>
       <div>
         <Payment/>
       </div>

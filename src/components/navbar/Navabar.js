@@ -4,7 +4,8 @@ import { Link, withRouter} from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import Cookies from 'js-cookie';
 import fire from '../../firebase';
-
+import logo from '../home/logo.png'
+import { useEffect } from 'react';
 
 
 
@@ -28,16 +29,16 @@ const Navbar = (props) => {
         setActiveClass('')
         setMenuHidden(false)
       }
-    } 
+  } 
+
 
   return (
     <nav className="navbar is-fixed-top main" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <div className="navbar-item">
-          <Link to={!currentUser ? '/' : `/${getUid()}`} >  
-            <img id="icon" src="https://img.icons8.com/color/50/000000/potters-wheel.png" alt="artisanship"/>
+          <Link to={!currentUser ? '/' : `/${getUid()}`} >
+            <img id="icon" src="https://img.icons8.com/color/96/000000/key-exchange.png" alt="Huckster"/>
             <strong id="company-name" style={{color: "antiquewhite"}}>Huckster</strong>
-            
           </Link>
         </div>
         <div onClick={navbarHide} className={`navbar-burger burger ${activeClass}`} aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -77,7 +78,6 @@ const Navbar = (props) => {
             </div>
           </div>
         </div>
-        {/* {isCartClicked && browserWidth > 600 ?<ShoppingCart/>:null} */}
         <div className="navbar-end">
           {currentUser ? 
             (

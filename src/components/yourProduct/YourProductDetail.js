@@ -4,9 +4,9 @@ import './model.css'
 const YourProductDetails = (props) => {
 
   return (
-      <div className="modal is-active">
+      <div className="modal is-active ">
         <div className="modal-background"></div>
-        <div className="modal-card">
+        <div className="modal-card animated zoomIn faster">
           <header className="modal-card-head">
             <p className="modal-card-title">{props.productName}</p>
             <button onClick={props.toggleDetail} className="delete" aria-label="close"></button>

@@ -8,7 +8,7 @@ import { AuthContext } from '../../context/AuthContext';
 
 const ShoppingCart = (props) => {
   const {getUid} = useContext(AuthContext)
-  const {cartItems, setOrderClicked,deleteCartItem} = useContext(ProductContext);
+  const {cartItems, getCartData,setOrderClicked,deleteCartItem} = useContext(ProductContext);
   const [isCartClicked, setCartClicked] = useState(false);
   const [total, setTotal] = useState(0);
   const [productCounter, setProductCounter] = useState(0);
@@ -26,14 +26,17 @@ const ShoppingCart = (props) => {
     })
     setTotal(sum)
     setProductCounter(count)
-    
   },[cartItems])
+
+  useEffect(()=>{
+    getCartData(getUid())
+  },[])
 
   return (
     <div style={{cursor:"pointer"}} id="cart-main">
       <div className="button shop-cart" onClick={toggleCart}>
         {productCounter ? (
-          <div style={{fontSize: 40}}>
+          <div  style={{fontSize: 40}}>
             {productCounter}
           </div>
           ) : 
@@ -42,7 +45,7 @@ const ShoppingCart = (props) => {
         )}
       </div>
       {isCartClicked ? (
-        <div className="box animated fadeIn" id="cart">
+        <div className="box animated fadeIn fast" id="cart">
               <ul className="sub-heading">
                 <li id="item-head">Items</li>
                 <li id="price-head">Price</li>
@@ -51,7 +54,7 @@ const ShoppingCart = (props) => {
               <ul>
                 {cartItems.map((productAdded) => {
                   return(
-                    <li id="product-added" data-id={productAdded.id} onClick={deleteCartItem}>{productAdded.productName.slice(0,22)}...</li>
+                    <li id="product-added" data-id={productAdded.id} onClick={deleteCartItem}>{productAdded.productName.slice(0,20)}...</li>
                   )
                 })}
                 Total: 

@@ -16,6 +16,11 @@ const ProductList = (props) => {
     setIsDetail(!isDetail)
   }
   
+  const animaterCartCounter = () =>{
+    const animate = document.querySelector('.shop-cart')
+    animate.classList.add('animated bounceInUp')
+  }
+
   return (
     <div>
     <div style={{margin: "100"}}>
@@ -23,7 +28,7 @@ const ProductList = (props) => {
           <YourProductDetails price={props.pricePerItem} imageUrl={props.imageUrl} productName={props.productName} productDetails={props.productDetails}  toggleDetail={toggleDetail}/>
         ) : null}
       </div>
-    <div className="card">
+    <div className="card" >
         <div className="card-content" >
         <figure className="image is-4by3" onClick={toggleDetail} style={{cursor: "pointer"}}>
             <img id="product-img" src={props.imageUrl} alt={props.productName} />
@@ -52,7 +57,7 @@ const ProductList = (props) => {
             </Link>
           </p>
           <p className="card-footer-item">
-            <button onClick={currentUser ? async ()=> {await addtoCartClicked(props.productName,props.pricePerItem,props.imageUrl); await getCartData(getUid())}: props.gotoSignIn} className="button is-primary add-to-cart" style={{backgroundColor:"#5d5b6a", color:'antiquewhite'}}>
+            <button onClick={currentUser ? async ()=> {await addtoCartClicked(props.productName,props.pricePerItem,props.imageUrl); await getCartData(getUid());animaterCartCounter()}: props.gotoSignIn} className="button is-primary add-to-cart" style={{backgroundColor:"#5d5b6a", color:'antiquewhite'}}>
               Add to Cart
             </button>
           </p>

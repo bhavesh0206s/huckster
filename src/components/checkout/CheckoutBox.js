@@ -12,6 +12,7 @@ const CheckoutBox = (props) => {
           </div>
           <div className="media-content">
             <div className="content">
+          <a class="delete is-large" data-id={props.id} onClick={props.delete} style={{float:"right"}} />
               <p id="name-checkout">
                 <strong>{props.productName}</strong>
                 <br/>
@@ -23,7 +24,6 @@ const CheckoutBox = (props) => {
             </div>
           </div>
       </article>
-      <button data-id={props.id} onClick={props.delete}>Delete</button>
     </div>
   );
 }

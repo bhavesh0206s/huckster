@@ -24,6 +24,7 @@
   text-transform: uppercase;
   color: antiquewhite;
   font-size: 1.2em;
+  font-weight: 600;
 }
 
 #title{
@@ -33,11 +34,12 @@
   text-transform: uppercase;
   font-size: 7rem;
   color: antiquewhite;
+  font-weight: 800;
 }
 #username{
   color: #706c61;
   font-size: 2em;
-
+  font-weight: 100;
 }
 #shop-now{
   font-size: 2em;
@@ -58,7 +60,7 @@
     padding-left: 30px;
   }
   #title{
-    font-size: 3em;
+    font-size: 4em;
   }
   #buy-online{
     font-size: 1em;

@@ -4,8 +4,6 @@ import './home.css'
 import Footer from '../footer/Footer';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
-import Loading from '../loading/Loading';
-
 
 const Home = () => {
   const {getUsername, currentUser} = useContext(AuthContext);

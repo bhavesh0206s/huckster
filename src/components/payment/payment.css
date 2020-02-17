@@ -17,6 +17,12 @@
   font-weight: 700;
 }
 
+#payment-text{
+  letter-spacing: 1px;
+  text-decoration: underline;
+  text-shadow: 2px 2px rgb(56, 54, 54);
+}
+
 .clicked{
   cursor: pointer;
   background: rgb(243, 53, 53);
