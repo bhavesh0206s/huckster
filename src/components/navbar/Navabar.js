@@ -71,7 +71,7 @@ const Navbar = (props) => {
             </div>
             <div className="navbar-dropdown">
               <div className="navbar-item1"  style={{color: "black", cursor:"pointer", padding:10}}>
-                <a href="https://www.linkedin.com/in/bhavesh-suthar-b3538b16a/" target="_blank"> 
+                <a href="https://www.linkedin.com/in/bhavesh-suthar-b3538b16a/" rel="noopener noreferrer" target="_blank"> 
                   Contact Us
                 </a>
               </div>

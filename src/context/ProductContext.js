@@ -13,6 +13,8 @@ const ProductContextProvider = (props) => {
   const [buyNowData, setBuyNowData] = useState([]);
   const [cartItems, setCartItems] = useState([])
   const [isOrderClicked, setOrderClicked] = useState(false);
+  const [total, setTotal] = useState(0);
+  const [productCounter, setProductCounter] = useState(0);
  
   const updateProductList = () => {
     let productRef = fireDb.collection('public-product-info');
@@ -105,12 +107,25 @@ const ProductContextProvider = (props) => {
   }
 
   useEffect(()=>{
+    let sum  = 0;
+    let count = 0;
+    cartItems.forEach(element => {
+      sum += Number(element.pricePerItem)
+      count++
+    })
+    setTotal(sum)
+    setProductCounter(count)
+  },[cartItems])
+
+  useEffect(()=>{
     updateProductList();
   },[]);
 
   return (
     <ProductContext.Provider 
       value={{
+        total,
+        productCounter,
         deleteCartItem,
         deleteBuyNowItem,
         cartItems,

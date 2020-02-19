@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import Product from './Product'
 import { useContext } from 'react';
 import './product.css'
@@ -13,11 +13,25 @@ const ProductList = (props) => {
     props.history.push('/signin')
   }
 
+
+  // useEffect(()=>{
+  //   if(document.documentElement.scrollTop > 20){
+  //     document.querySelector('.up-arrow').classList.remove('up-arrow-yes')
+  //   }
+  //   else{
+  //     document.querySelector('.up-arrow').classList.add('up-arrow-yes')
+  //   }
+  // })
+
+  const goUp = () =>{
+    document.documentElement.scrollTop = 0;
+  }
+
   return (
     <div>
       <div className="product-home"></div>
         <Search searchInput={searchInput}/>
-        <div className="grid" >
+        <div className="grid">
           {input === '' ? (
             productInfo.map(info => 
               <Product 
@@ -41,6 +55,9 @@ const ProductList = (props) => {
               />
             ) 
           )}
+          <div id="up-arrow" onClick={goUp}>
+            <img src="https://img.icons8.com/bubbles/100/000000/long-arrow-up.png" width="70" alt='up' className="up-arrow"/>
+          </div>
         </div>
     </div>
   );

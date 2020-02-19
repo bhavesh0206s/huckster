@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: -11px -7px 40px -20px rgba(0,0,0,0.75);
 }
 
 #search-field{

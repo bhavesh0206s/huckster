@@ -5,32 +5,22 @@ import CheckoutBox from './CheckoutBox';
 import Payment from '../payment/Payment';
 import './checkout.css';
 import { Redirect } from 'react-router-dom';
+import { useCallback } from 'react';
 
 
 
-const Checkout = () => {
+const Checkout = (props) => {
   const {getUid} = useContext(AuthContext)
-  const {getCartData, buyNowData, isOrderClicked,getBuyNowData, cartItems,deleteBuyNowItem,deleteCartItem} = useContext(ProductContext);
-  const [total, setTotal] = useState(0);
-  const [productCounter, setProductCounter] = useState(0);
-  
-  const inCart = () => {
-    let sum  = 0;
-    let count = 0;
-    cartItems.forEach(element => {
-      sum += Number(element.pricePerItem)
-      count++
-    })
-    setTotal(sum)
-    setProductCounter(count)
-  }
+  const {total,productCounter, getCartData, buyNowData, isOrderClicked,getBuyNowData, cartItems,deleteBuyNowItem,deleteCartItem} = useContext(ProductContext);
 
 
   useEffect(()=>{
     let uid = getUid()
     getBuyNowData(uid)
     getCartData(uid)
-    inCart()
+    if(total === 0){
+      props.history.push('/')
+    }
   },[])
 
   return (
