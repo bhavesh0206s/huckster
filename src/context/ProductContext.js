@@ -15,7 +15,8 @@ const ProductContextProvider = (props) => {
   const [isOrderClicked, setOrderClicked] = useState(false);
   const [total, setTotal] = useState(0);
   const [productCounter, setProductCounter] = useState(0);
- 
+  const [paymentSelected, setPaymentSelected] = useState('')
+
   const updateProductList = () => {
     let productRef = fireDb.collection('public-product-info');
     productRef.onSnapshot(snap => {
@@ -24,7 +25,7 @@ const ProductContextProvider = (props) => {
         ...doc.data()
       }))
       setProductInfo(productData);
-      },error => console.log("Error getting document:", error));
+      });
   }
 
   const searchInput = (e)=>{
@@ -50,7 +51,7 @@ const ProductContextProvider = (props) => {
     }
     let buyProductRef = fireDb.collection('user').doc(`${userid}`);
     buyProductRef.collection('buy-now').doc('product-data').set(fieldData)
-    .catch((e)=> console.log(e))    
+    .catch()    
   }
 
   const getBuyNowData = (userid) => {
@@ -59,15 +60,14 @@ const ProductContextProvider = (props) => {
     productRef.get().then(snap => {
       const productData = snap.data()
       setBuyNowData([productData])
-      },error => console.log("Error getting document:", error));
+      });
   }
 
   const deleteBuyNowItem = ()=>{
     let userid =  fire.auth().currentUser.uid;
     let productRef = fireDb.collection('user').doc(`${userid}`).collection('buy-now').doc('product-data');
     productRef.delete()
-    .catch(e=>console.log(e))
-    console.log('deleted')
+    .catch()
     setBuyNowData([])
   }
 
@@ -81,7 +81,7 @@ const ProductContextProvider = (props) => {
     }
     let buyProductRef = fireDb.collection('user').doc(`${userid}`);
     buyProductRef.collection('cart-items').add(fieldData)
-    .catch((e)=> console.log(e))
+    .catch()
   }
 
   const getCartData = (userid)=>{
@@ -92,7 +92,7 @@ const ProductContextProvider = (props) => {
         ...doc.data()
       }))
       setCartItems(productData)
-      },error => console.log("Error getting document:", error));
+      });
   }
 
   const deleteCartItem = (e)=>{
@@ -103,7 +103,7 @@ const ProductContextProvider = (props) => {
     let productRef = fireDb.collection('user').doc(`${userid}`).collection('cart-items').doc(docId);
     productRef.delete()
       .then(()=>{})
-      .catch(e=>console.log(e))
+      .catch()
   }
 
   useEffect(()=>{
@@ -124,6 +124,8 @@ const ProductContextProvider = (props) => {
   return (
     <ProductContext.Provider 
       value={{
+        paymentSelected,
+        setPaymentSelected,
         total,
         productCounter,
         deleteCartItem,

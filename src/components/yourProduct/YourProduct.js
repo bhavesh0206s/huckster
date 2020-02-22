@@ -21,7 +21,7 @@ const YourProduct = (props) => {
       </div>
       <div className="card" style={{marginTop:70}}>
         <div className="card-content">
-        <figure class="image is-4by3">
+        <figure className="image is-4by3">
             <img id="product-img" src={props.imageUrl} alt={props.productName} />
         </figure>
         </div>

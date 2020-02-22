@@ -1,0 +1,50 @@
+.free{
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.luck-winner{
+  font-size: 2em;
+}
+
+.free-you{
+  font-weight: 700;
+  font-size: 3em;
+}
+
+.enjoy{
+  margin-top: 50px;
+  text-transform: uppercase;
+  font-size: 4em;
+  font-weight: 1000;
+  animation: borderAni 1.5s ease-in alternate;
+  padding: .5em;
+  border: 10px solid #5d5b6a;
+  border-radius: 5px;
+  color: #5d5b6a;
+  box-shadow: 10px 10px 61px 6px rgba(0,0,0,0.75);
+}
+
+@keyframes borderAni {
+  0%{
+    color:rgb(64, 59, 70);
+    border: 10px solid rgb(64, 59, 70);
+    box-shadow: 10px 10px 61px -15px rgba(0,0,0,0.75);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .free{
+    padding: 200px 5px 0 5px;
+
+  }
+  .luck-winner{
+    font-size: 1.5em;
+  }
+  .free-you{
+    font-size: 2.3em;
+  }
+}

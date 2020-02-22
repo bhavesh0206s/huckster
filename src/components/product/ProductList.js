@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Product from './Product'
 import { useContext } from 'react';
 import './product.css'
@@ -12,16 +12,6 @@ const ProductList = (props) => {
   const gotoSignIn = () => {
     props.history.push('/signin')
   }
-
-
-  // useEffect(()=>{
-  //   if(document.documentElement.scrollTop > 20){
-  //     document.querySelector('.up-arrow').classList.remove('up-arrow-yes')
-  //   }
-  //   else{
-  //     document.querySelector('.up-arrow').classList.add('up-arrow-yes')
-  //   }
-  // })
 
   const goUp = () =>{
     document.documentElement.scrollTop = 0;

@@ -1,7 +1,6 @@
 import React, {useContext } from 'react';
 import YourProduct from './YourProduct';
 import { useEffect } from 'react';
-import Loading from '../loading/Loading'
 import { YourProductContext } from '../../context/YourProductContext';
 import '../product/product.css'
 

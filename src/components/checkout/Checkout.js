@@ -1,34 +1,28 @@
-import React , {useContext,useState,useEffect} from 'react';
+import React , {useContext, useEffect} from 'react';
 import { ProductContext } from '../../context/ProductContext';
 import { AuthContext } from '../../context/AuthContext';
 import CheckoutBox from './CheckoutBox';
 import Payment from '../payment/Payment';
 import './checkout.css';
-import { Redirect } from 'react-router-dom';
-import { useCallback } from 'react';
-
-
+import { Link } from 'react-router-dom';
 
 const Checkout = (props) => {
   const {getUid} = useContext(AuthContext)
-  const {total,productCounter, getCartData, buyNowData, isOrderClicked,getBuyNowData, cartItems,deleteBuyNowItem,deleteCartItem} = useContext(ProductContext);
-
+  const {total,paymentSelected,productCounter, getCartData, buyNowData, isOrderClicked,getBuyNowData, cartItems,deleteBuyNowItem,deleteCartItem} = useContext(ProductContext);
 
   useEffect(()=>{
     let uid = getUid()
     getBuyNowData(uid)
     getCartData(uid)
-    if(total === 0){
-      props.history.push('/')
-    }
   },[])
 
   return (
     <div className="checkout-box">
       {productCounter>0 || isOrderClicked  ? (
-        cartItems.map(item=>
+        cartItems.map((item ,i)=>
           item?(
             <CheckoutBox
+              key = {i}
               productName = {item.productName}
               imageUrl = {item.imageUrl}
               pricePerItem = {item.pricePerItem}
@@ -38,9 +32,10 @@ const Checkout = (props) => {
           ):null
         )
       ): (
-        buyNowData.map(item =>
+        buyNowData.map((item ,i) =>
           item?(
             <CheckoutBox
+              key = {i}
               productName = {item.productName}
               imageUrl = {item.imageUrl}
               pricePerItem = {item.pricePerItem}
@@ -60,7 +55,13 @@ const Checkout = (props) => {
         <Payment/>
       </div>
       <div style={{paddingBottom:"1em"}}>
-        <button class="button is-danger" id="checkout-red" style={{background:'rgb(243, 53, 53)'}}>Submit</button>
+        {paymentSelected.length !== 0 && (cartItems.length !==0 || buyNowData.length!==0)? (
+          <Link to={`/free/${getUid()}`}>
+            <button className="button is-danger" id="checkout-red" style={{background:'rgb(243, 53, 53)'}}>Submit</button>
+          </Link>
+        ) : (
+          <button className="button is-danger" id="checkout-red" style={{background:'rgb(243, 53, 53)'}}>Submit</button>
+        )}
       </div>
     </div>
   );

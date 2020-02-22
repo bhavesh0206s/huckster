@@ -1,6 +1,5 @@
 import React from 'react';
 import './search.css'
-import { useState } from 'react';
 
 const Search = (props) => {
   return (

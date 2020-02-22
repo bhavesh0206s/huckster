@@ -18,10 +18,10 @@ import YourProductContextProvider from './context/YourProductContext';
 import ProductContextProvider from './context/ProductContext';
 import './App.css'
 import Checkout from './components/checkout/Checkout';
+import Free from './components/free/Free';
 
 const App = (props)=>{
   const {currentUser, getUid} = useContext(AuthContext);
-  // const sessionUser = Cookies.get('user')
 
   return(
     <Router>
@@ -43,6 +43,7 @@ const App = (props)=>{
                   <PrivateRoute path={`/sell/${getUid()}`} component={SellHere}/>
                   <PrivateRoute path={`/your-product/${getUid()}`} component={YourProductList}/>
                   <PrivateRoute path={`/checkout/${getUid()}`} component={Checkout}/>
+                  <PrivateRoute path={`/free/${getUid()}`} component={Free}/>
                   <Route component={Notfound} />
               </Switch>
             </YourProductContextProvider>

@@ -16,7 +16,6 @@ const ProductList = (props) => {
     setIsDetail(!isDetail)
   }
   
-
   return (
     <div>
     <div style={{margin: "100"}}>

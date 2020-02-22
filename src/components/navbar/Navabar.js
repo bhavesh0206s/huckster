@@ -4,10 +4,6 @@ import { Link, withRouter} from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import Cookies from 'js-cookie';
 import fire from '../../firebase';
-import logo from '../home/logo.png'
-import { useEffect } from 'react';
-
-
 
 const Navbar = (props) => {
   const {currentUser, getUid} = useContext(AuthContext);

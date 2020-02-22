@@ -10,6 +10,7 @@
   border-radius: px;
   border-style: none;
   border-left: 5px solid rgb(243, 53, 53);
+  transition: background .5s;
 }
 .option:hover{
   cursor: pointer;

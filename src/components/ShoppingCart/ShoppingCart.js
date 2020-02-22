@@ -39,18 +39,18 @@ const ShoppingCart = (props) => {
               </ul>
             <div className="products">
               <ul>
-                {cartItems.map((productAdded) => {
+                {cartItems.map((productAdded, i) => {
                   return(
-                    <li id="product-added" data-id={productAdded.id} onClick={deleteCartItem}>{productAdded.productName.slice(0,20)}...</li>
+                    <li id="product-added" key={i} data-id={productAdded.id} onClick={deleteCartItem}>{productAdded.productName.slice(0,20)}...</li>
                   )
                 })}
                 Total: 
               </ul>
               <ul>
-                {cartItems.map((price)=>{
+                {cartItems.map((price, i)=>{
                   return(
                     <Fragment>
-                      <li id="product-price-cart" data-id={price.id}> &#8377;{price.pricePerItem}</li>
+                      <li key={i} id="product-price-cart" data-id={price.id}> &#8377;{price.pricePerItem}</li>
                     </Fragment>
                   )
                 })}
