@@ -27,6 +27,7 @@ const Navbar = (props) => {
       }
   } 
 
+  
 
   return (
     <nav className="navbar is-fixed-top main" role="navigation" aria-label="main navigation">

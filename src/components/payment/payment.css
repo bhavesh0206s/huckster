@@ -29,6 +29,17 @@
   background: rgb(243, 53, 53);
 }
 
+#radio-btn1 > label,#radio-btn2,#radio-btn3,#radio-btn4{
+  cursor: pointer;
+  transform: scale(1);
+  transition: 0.5s;
+  color: brown;
+}
+
+#radio-btn1:hover,#radio-btn2:hover,#radio-btn3:hover,#radio-btn4:hover{
+  transform: scale(1.5);
+}
+
 @media only screen and (max-width: 600px) {
   .option{
     width: 350px;
