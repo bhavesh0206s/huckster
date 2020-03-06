@@ -18,6 +18,7 @@ const Checkout = (props) => {
 
   return (
     <div className="checkout-box">
+      <h1 style={{paddingTop: 40, textTransform:"uppercase", fontSize: "2em", fontWeight: 700}}>Cart</h1>
       {productCounter>0 || isOrderClicked  ? (
         cartItems.map((item ,i)=>
           item?(
