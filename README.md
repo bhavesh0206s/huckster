@@ -2,7 +2,7 @@
 I used React, Context API, React Router, Bulma, and Firebase
 
 ## Login Details for Testing
-email: test@gmail.com
+email: test@gmail.com <br/>
 password: test1234
 
 ## Login Page:
