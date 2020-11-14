@@ -29,7 +29,7 @@ const ProductList = (props) => {
             <img id="product-img" src={props.imageUrl} alt={props.productName} />
         </figure>
         </div>
-        <div style={{display:"flex" ,justifyContent:"space-around"}}> 
+        <div style={{display:"flex" ,flexDirection: 'column',justifyContent:"space-around", paddingLeft: 20, paddingBottom: 10}}> 
           <div className="subtitle product-name" onClick={toggleDetail}>
             {props.productName.slice(0,25)}...
           </div>
@@ -46,13 +46,13 @@ const ProductList = (props) => {
               <button onClick={()=> currentUser ?
                     buyNowClicked(props.productName, props.pricePerItem, props.imageUrl) : props.gotoSignIn}  
                     className="button is-primary is-inverted is-outlined buy-now" 
-                    style={{backgroundColor:"#758184", color:'antiquewhite'}}>
+                    style={{backgroundColor:"#758184", color:'antiquewhite', borderRadius: 40}}>
                 Buy Now
               </button>
             </Link>
           </p>
           <p className="card-footer-item">
-            <button onClick={currentUser ? async ()=> {await addtoCartClicked(props.productName,props.pricePerItem,props.imageUrl); await getCartData(getUid())}: props.gotoSignIn} className="button is-primary add-to-cart" style={{backgroundColor:"#5d5b6a", color:'antiquewhite'}}>
+            <button onClick={currentUser ? async ()=> {await addtoCartClicked(props.productName,props.pricePerItem,props.imageUrl); await getCartData(getUid())}: props.gotoSignIn} className="button is-primary add-to-cart" style={{backgroundColor:"#5d5b6a", color:'antiquewhite', borderRadius: 40}}>
               Add to Cart
             </button>
           </p>

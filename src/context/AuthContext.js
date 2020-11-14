@@ -38,7 +38,7 @@ const AuthContextProvider = (props) => {
         console.log(data);
         // await fire.auth().signInWithEmailAndPassword(email,password);
       }
-    }).catch(e => console.log(e))
+    }).catch(e => console.log('error from signin: ',e))
     setLoading(false)
   }
 
@@ -53,11 +53,11 @@ const AuthContextProvider = (props) => {
           let data = doc.data()
           console.log(data)
         }
-        // setLoading(false)
+        setLoading(false)
       })
     }
     catch(e){
-      console.log(e)
+      console.log('error from signup: ',e);
       // setError(e)
     }
   }

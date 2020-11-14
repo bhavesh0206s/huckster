@@ -16,8 +16,11 @@
   background-color: #cfb495;
   max-width: 100%;
   max-height: 100%;
-  border-radius: 5px;
+  border-radius: 40px;
   margin: 20px;
+  transform: perspective(1500px) rotateY(15deg);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  transition: transform 1s ease 0s;
 }
 
 
@@ -36,8 +39,13 @@
   0 12.5px 10px rgba(0, 0, 0, 0.06),
   0 22.3px 17.9px rgba(0, 0, 0, 0.072),
   0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-  0 100px 80px rgba(0, 0, 0, 0.2)
+  0 100px 80px rgba(0, 0, 0, 0.2);
+  transform: perspective(3000px) rotateY(5deg);
 ;
+}
+
+#product-img{
+  border-radius: 40px;
 }
 
 .product-name:hover{

@@ -25,7 +25,7 @@ const YourProduct = (props) => {
             <img id="product-img" src={props.imageUrl} alt={props.productName} />
         </figure>
         </div>
-        <div style={{display:"flex" ,justifyContent:"space-around"}}> 
+        <div style={{display:"flex" ,flexDirection: 'column',justifyContent:"space-around", paddingLeft: 20, paddingBottom: 10}}> 
             <div className="subtitle product-name">
             {props.productName.slice(0,25)}...
             </div>
@@ -38,12 +38,12 @@ const YourProduct = (props) => {
           </div>
         <footer className="card-footer">
           <p className="card-footer-item">
-            <button onClick={toggleDetail} className="button is-primary is-inverted is-outlined buy-now" style={{backgroundColor:"#758184", color:'antiquewhite'}}>
+            <button onClick={toggleDetail} className="button is-primary is-inverted is-outlined buy-now" style={{backgroundColor:"#758184", color:'antiquewhite', borderRadius: 40}}>
               Details
             </button>
           </p>
           <p className="card-footer-item">
-            <button value={props.id} onClick={props.deleteItem} className="button is-primary add-to-cart delete-btn" style={{backgroundColor:"#5d5b6a", color:'antiquewhite'}}>
+            <button value={props.id} onClick={props.deleteItem} className="button is-primary add-to-cart delete-btn" style={{backgroundColor:"#5d5b6a", color:'antiquewhite', borderRadius: 40}}>
               Delete
             </button>
           </p>
