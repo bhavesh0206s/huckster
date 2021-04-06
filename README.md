@@ -1,6 +1,10 @@
 # E-COMMERCE WEB-APP MADE TO BUY AND SELL ANYTHING 
 I used React, Context API, React Router, Bulma, and Firebase
 
+## Login Details for Testing
+email: test@gmail.com <br/>
+password: test1234
+
 ## Login Page:
 
 ![Login Page](https://i.paste.pics/4a19a859f009c33aa376ddab696c30f7.png) 
